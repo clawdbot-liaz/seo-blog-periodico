@@ -9,6 +9,10 @@ export interface Post {
   tags: string[]
   seoTitle?: string
   seoDescription?: string
+  author?: string
+  isBreaking?: boolean
+  isFeatured?: boolean
+  imageUrl?: string
 }
 
 const samplePosts: Post[] = [

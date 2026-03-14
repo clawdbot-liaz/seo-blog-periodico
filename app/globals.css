@@ -5,40 +5,108 @@
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --foreground: 0 0% 10%;
   }
 
   body {
     @apply bg-white text-gray-900 antialiased;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
   }
 }
 
 @layer components {
-  .prose {
-    @apply max-w-none;
+  /* Estilos de periódico */
+  .newspaper-border {
+    @apply border-t-4 border-black;
   }
   
-  .prose h1 {
-    @apply text-4xl font-bold mt-8 mb-4;
+  .headline {
+    @apply font-bold tracking-tight;
+    font-family: 'Times New Roman', Times, serif;
   }
   
-  .prose h2 {
-    @apply text-3xl font-semibold mt-6 mb-3;
+  .byline {
+    @apply text-gray-600 text-sm italic;
   }
   
-  .prose h3 {
-    @apply text-2xl font-semibold mt-5 mb-2;
+  .section-label {
+    @apply inline-block px-3 py-1 text-xs font-bold uppercase tracking-wider;
   }
   
-  .prose p {
-    @apply my-4 leading-relaxed;
+  /* Columnas de periódico */
+  .newspaper-columns {
+    column-count: 1;
   }
   
-  .prose a {
-    @apply text-primary-600 hover:text-primary-800 underline;
+  @media (min-width: 768px) {
+    .newspaper-columns {
+      column-count: 2;
+      column-gap: 2rem;
+    }
   }
   
-  .prose code {
-    @apply bg-gray-100 px-1 py-0.5 rounded text-sm;
+  @media (min-width: 1024px) {
+    .newspaper-columns {
+      column-count: 3;
+    }
+  }
+  
+  /* Estilos de artículo */
+  .article-lead {
+    @apply text-xl font-semibold text-gray-800 mb-4;
+  }
+  
+  .article-body {
+    @apply text-gray-700 leading-relaxed;
+  }
+  
+  .article-body p {
+    @apply mb-4;
+  }
+  
+  .article-body h2 {
+    @apply text-2xl font-bold mt-8 mb-4 text-gray-900;
+  }
+  
+  .article-body h3 {
+    @apply text-xl font-semibold mt-6 mb-3 text-gray-900;
+  }
+  
+  /* Breaking news */
+  .breaking-news {
+    @apply bg-red-600 text-white px-4 py-2 font-bold uppercase tracking-wider animate-pulse;
+  }
+  
+  /* Newspaper grid */
+  .newspaper-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  @media (min-width: 768px) {
+    .newspaper-grid {
+      grid-template-columns: 2fr 1fr;
+    }
+  }
+  
+  /* Featured article */
+  .featured-article {
+    @apply border-l-4 border-red-600 pl-4;
+  }
+  
+  /* Pull quote */
+  .pull-quote {
+    @apply border-l-4 border-gray-300 pl-4 italic text-xl text-gray-700 my-6;
+  }
+  
+  /* Marquee animation */
+  @keyframes marquee {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+  }
+  
+  .animate-marquee {
+    animation: marquee 20s linear infinite;
   }
 }
