@@ -1,0 +1,56 @@
+name: Manual Deploy to Vercel
+
+on:
+  workflow_dispatch:  # Permite ejecución manual
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: 📥 Checkout code
+      uses: actions/checkout@v3
+      
+    - name: ⎔ Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+        cache: 'npm'
+        
+    - name: 📦 Install dependencies
+      run: npm ci
+      
+    - name: 🔨 Build project
+      run: npm run build
+      
+    - name: ✅ Build successful
+      if: success()
+      run: echo "✅ Build completado exitosamente"
+      
+    - name: 🚀 Deploy to Vercel (Manual Trigger)
+      if: github.event_name == 'workflow_dispatch'
+      run: |
+        echo "🚀 Para desplegar en Vercel:"
+        echo ""
+        echo "1. Ve a https://vercel.com"
+        echo "2. Inicia sesión con GitHub"
+        echo "3. Busca 'seo-blog-optimizado-'"
+        echo "4. Si existe: Deployments → ... → Redeploy"
+        echo "5. Si no existe: Add New → Project → Import"
+        echo ""
+        echo "📊 Estado actual:"
+        echo "✅ Código en GitHub: https://github.com/IntelligentWorldd/seo-blog-optimizado-"
+        echo "✅ Build exitoso"
+        echo "✅ Listo para deploy"
+        
+    - name: 📝 Notify on push
+      if: github.event_name == 'push'
+      run: |
+        echo "🔔 Push detectado en main branch"
+        echo "Vercel debería iniciar deploy automático"
+        echo "Si no lo hace, verifica:"
+        echo "1. Webhooks en GitHub Settings"
+        echo "2. Configuración en Vercel Git settings"
+        echo "3. Token permissions"
