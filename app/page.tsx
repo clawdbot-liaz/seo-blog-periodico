@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { getPosts } from '@/lib/posts'
 import NewsCard from '@/components/NewsCard'
+import NewsletterForm from '@/components/NewsletterForm'
 import { Newspaper, TrendingUp, Zap } from 'lucide-react'
 
 export default async function Home() {
@@ -96,7 +97,7 @@ export default async function Home() {
         </div>
 
         {/* Destacados del día */}
-        <div className="bg-gray-50 rounded-2xl p-8 border border-gray-200">
+        <div className="bg-gray-50 rounded-2xl p-8 border border-gray-200 mb-12">
           <h3 className="text-2xl font-bold mb-8 flex items-center gap-3">
             <div className="p-2 bg-red-100 rounded-lg">
               <Zap className="h-6 w-6 text-red-600" />
@@ -109,6 +110,9 @@ export default async function Home() {
             ))}
           </div>
         </div>
+
+        {/* Newsletter funcional */}
+        <NewsletterForm />
       </section>
     </div>
   )

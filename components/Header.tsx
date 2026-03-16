@@ -91,6 +91,9 @@ export default function Header() {
               <Link href="/opinion" className="font-bold text-gray-900 hover:text-red-600 transition border-b-2 border-transparent hover:border-red-600 pb-1">
                 OPINIÓN
               </Link>
+              <Link href="/suscripcion" className="font-bold text-red-600 hover:text-red-700 transition border-b-2 border-red-600 pb-1">
+                SUSCRIPCIÓN
+              </Link>
             </div>
 
             {/* Search and menu */}
