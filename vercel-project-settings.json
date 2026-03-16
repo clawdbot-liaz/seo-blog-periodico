@@ -1,0 +1,24 @@
+{
+  "projectSettings": {
+    "framework": "nextjs",
+    "devCommand": "next dev",
+    "installCommand": "npm install",
+    "buildCommand": "npm run build",
+    "outputDirectory": ".next",
+    "rootDirectory": "",
+    "nodeVersion": "18.x",
+    "ignoreCommand": "exit 0",
+    "gitForkProtection": false,
+    "gitLFS": false,
+    "enableGitIgnoreComment": false
+  },
+  "git": {
+    "deploymentEnabled": true,
+    "repo": "IntelligentWorldd/seo-blog-optimizado-",
+    "owner": "IntelligentWorldd",
+    "slug": "seo-blog-optimizado-",
+    "branch": "main",
+    "repoId": "R_kgDOCf0SYw",
+    "productionBranch": "main"
+  }
+}

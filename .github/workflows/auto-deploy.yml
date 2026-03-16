@@ -1,0 +1,65 @@
+name: Auto Deploy to Vercel
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    if: github.event_name == 'push'  # Solo en push, no en PR
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: 📥 Checkout code
+      uses: actions/checkout@v3
+      
+    - name: 🔍 Extract commit author info
+      id: author
+      run: |
+        echo "COMMITTER_NAME=$(git log -1 --pretty=format:'%an')" >> $GITHUB_OUTPUT
+        echo "COMMITTER_EMAIL=$(git log -1 --pretty=format:'%ae')" >> $GITHUB_OUTPUT
+        echo "COMMIT_MESSAGE=$(git log -1 --pretty=format:'%s')" >> $GITHUB_OUTPUT
+        
+    - name: 🚀 Trigger Vercel Deploy via Webhook
+      run: |
+        # Usar el deploy hook que YA tienes configurado
+        DEPLOY_HOOK="https://api.vercel.com/v1/integrations/deploy/prj_IXhSQF9BB7Nfm0zevGdX6cDJmCaW/fNdTJGMHbZ"
+        
+        echo "🚀 Triggering Vercel deploy..."
+        echo "Commit by: ${{ steps.author.outputs.COMMITTER_NAME }}"
+        echo "Commit message: ${{ steps.author.outputs.COMMIT_MESSAGE }}"
+        
+        # Hacer la petición al webhook
+        curl -X POST "$DEPLOY_HOOK" \
+          -H "Content-Type: application/json" \
+          -H "User-Agent: GitHub-Actions" \
+          -d '{
+            "ref": "main",
+            "commit": {
+              "id": "${{ github.sha }}",
+              "message": "${{ github.event.head_commit.message }}",
+              "author": {
+                "name": "${{ github.actor }}",
+                "email": "${{ github.actor }}@users.noreply.github.com"
+              }
+            }
+          }'
+        
+        echo "✅ Deploy triggered successfully"
+        
+    - name: 📊 Deployment Status
+      run: |
+        echo "🌐 Your site will be available at:"
+        echo "   https://seo-blog-optimizado.vercel.app"
+        echo ""
+        echo "📋 Check deployment status at:"
+        echo "   https://vercel.com/IntelligentWorldd/seo-blog-optimizado-"
+        echo ""
+        echo "⏱️ Deployment usually takes 2-3 minutes"
+        echo ""
+        echo "🔧 If deployment fails, check:"
+        echo "   1. Vercel Dashboard → Deployments"
+        echo "   2. Build logs for errors"
+        echo "   3. GitHub Settings → Webhooks"

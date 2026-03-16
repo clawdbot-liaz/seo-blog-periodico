@@ -1,4 +1,4 @@
-name: Manual Deploy to Vercel
+name: Deploy to Vercel
 
 on:
   workflow_dispatch:  # Permite ejecución manual
@@ -12,7 +12,9 @@ jobs:
     steps:
     - name: 📥 Checkout code
       uses: actions/checkout@v3
-      
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        
     - name: ⎔ Setup Node.js
       uses: actions/setup-node@v3
       with:
@@ -25,32 +27,15 @@ jobs:
     - name: 🔨 Build project
       run: npm run build
       
-    - name: ✅ Build successful
-      if: success()
-      run: echo "✅ Build completado exitosamente"
-      
-    - name: 🚀 Deploy to Vercel (Manual Trigger)
-      if: github.event_name == 'workflow_dispatch'
+    - name: 🚀 Trigger Vercel Deploy
       run: |
-        echo "🚀 Para desplegar en Vercel:"
-        echo ""
-        echo "1. Ve a https://vercel.com"
-        echo "2. Inicia sesión con GitHub"
-        echo "3. Busca 'seo-blog-optimizado-'"
-        echo "4. Si existe: Deployments → ... → Redeploy"
-        echo "5. Si no existe: Add New → Project → Import"
-        echo ""
-        echo "📊 Estado actual:"
-        echo "✅ Código en GitHub: https://github.com/IntelligentWorldd/seo-blog-optimizado-"
-        echo "✅ Build exitoso"
-        echo "✅ Listo para deploy"
+        # Usar el deploy hook de Vercel
+        curl -X POST "https://api.vercel.com/v1/integrations/deploy/prj_IXhSQF9BB7Nfm0zevGdX6cDJmCaW/fNdTJGMHbZ" \
+          -H "Content-Type: application/json" \
+          -d '{"ref":"main"}'
         
-    - name: 📝 Notify on push
-      if: github.event_name == 'push'
+    - name: ✅ Deploy triggered
       run: |
-        echo "🔔 Push detectado en main branch"
-        echo "Vercel debería iniciar deploy automático"
-        echo "Si no lo hace, verifica:"
-        echo "1. Webhooks en GitHub Settings"
-        echo "2. Configuración en Vercel Git settings"
-        echo "3. Token permissions"
+        echo "✅ Deploy triggered successfully"
+        echo "Check status at: https://vercel.com/IntelligentWorldd/seo-blog-optimizado-"
+        echo "Site will be available at: https://seo-blog-optimizado.vercel.app"
