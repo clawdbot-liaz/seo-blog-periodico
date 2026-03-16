@@ -1,4 +1,4 @@
-import { Newspaper, Facebook, Twitter, Instagram, Youtube, Mail } from 'lucide-react'
+import { Newspaper, Facebook, Twitter, Instagram, Youtube } from 'lucide-react'
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
@@ -63,26 +63,15 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Newsletter */}
+          {/* Contacto directo */}
           <div>
-            <h4 className="text-lg font-bold mb-6 border-l-4 border-red-600 pl-3">NEWSLETTER</h4>
-            <p className="text-gray-400 mb-4">
-              Suscríbete para recibir las noticias más importantes en tu correo.
-            </p>
-            <form className="space-y-3">
-              <input
-                type="email"
-                placeholder="Tu email"
-                className="w-full px-4 py-3 rounded-lg bg-gray-800 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-red-600"
-              />
-              <button
-                type="submit"
-                className="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-3 rounded-lg transition flex items-center justify-center gap-2"
-              >
-                <Mail className="h-4 w-4" />
-                Suscribirse
-              </button>
-            </form>
+            <h4 className="text-lg font-bold mb-6 border-l-4 border-red-600 pl-3">CONTACTO DIRECTO</h4>
+            <div className="text-gray-400 space-y-3">
+              <p>📧 redaccion@elinformador.com</p>
+              <p>📱 +34 900 123 456</p>
+              <p>🏢 Calle Periódico, 123, Madrid</p>
+              <p>🕒 Lunes a Viernes: 9:00 - 18:00</p>
+            </div>
           </div>
         </div>
 

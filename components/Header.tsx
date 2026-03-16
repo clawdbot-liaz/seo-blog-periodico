@@ -14,18 +14,13 @@ export default function Header() {
       {/* Top bar */}
       <div className="bg-black text-white py-2">
         <div className="container mx-auto px-4">
-          <div className="flex justify-between items-center text-sm">
+          <div className="flex justify-center items-center text-sm">
             <div className="flex items-center gap-4">
               <span className="hidden md:inline">📰 Edición Digital</span>
               <span>•</span>
               <span>{currentDate}</span>
               <span>•</span>
               <span className="text-yellow-300">ÚLTIMA HORA</span>
-            </div>
-            <div className="flex items-center gap-4">
-              <button className="hover:text-yellow-300 transition">Suscribirse</button>
-              <span>|</span>
-              <button className="hover:text-yellow-300 transition">Iniciar Sesión</button>
             </div>
           </div>
         </div>
@@ -90,9 +85,6 @@ export default function Header() {
               </Link>
               <Link href="/opinion" className="font-bold text-gray-900 hover:text-red-600 transition border-b-2 border-transparent hover:border-red-600 pb-1">
                 OPINIÓN
-              </Link>
-              <Link href="/suscripcion" className="font-bold text-red-600 hover:text-red-700 transition border-b-2 border-red-600 pb-1">
-                SUSCRIPCIÓN
               </Link>
             </div>
 
