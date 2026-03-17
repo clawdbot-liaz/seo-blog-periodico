@@ -1,0 +1,9 @@
+{
+  "functions": [
+    {
+      "path": "/*",
+      "function": "rewrite"
+    }
+  ],
+  "version": 1
+}

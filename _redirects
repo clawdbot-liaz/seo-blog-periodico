@@ -1,0 +1,15 @@
+/*    /index.html    200
+
+# Next.js App Router support
+/_next/static/* /_next/static/:splat 200
+/_next/data/* /_next/data/:splat 200
+
+# API routes (si las tuvieras)
+/api/* /api/:splat 200
+
+# Sitemap and robots
+/sitemap.xml /sitemap.xml 200
+/robots.txt /robots.txt 200
+
+# Fallback para SPA
+/* /index.html 200
