@@ -48,7 +48,7 @@ export default function Header() {
               <span className="breaking-news text-sm">BREAKING</span>
               <div className="overflow-hidden">
                 <div className="animate-marquee whitespace-nowrap text-gray-800 font-semibold">
-                  • SEO técnico revoluciona el tráfico web • Nueva actualización de Google afecta rankings • Expertos predicen cambios en algoritmos para 2024 •
+                  • ÚLTIMA HORA: Incendio en edificio del centro de Madrid • ESPORTS: Team Spirit gana el Major de Berlín • INFLUENCER: Streamer baneado de Twitch • TECNOLOGÍA: Apple presenta nueva plataforma de IA •
                 </div>
               </div>
             </div>
@@ -65,26 +65,17 @@ export default function Header() {
               <Link href="/" className="font-bold text-gray-900 hover:text-red-600 transition border-b-2 border-transparent hover:border-red-600 pb-1">
                 PORTADA
               </Link>
-              <Link href="/nacional" className="font-bold text-gray-900 hover:text-red-600 transition border-b-2 border-transparent hover:border-red-600 pb-1">
-                NACIONAL
+              <Link href="/ultima-hora" className="font-bold text-gray-900 hover:text-red-600 transition border-b-2 border-transparent hover:border-red-600 pb-1">
+                ÚLTIMA HORA
               </Link>
-              <Link href="/internacional" className="font-bold text-gray-900 hover:text-red-600 transition border-b-2 border-transparent hover:border-red-600 pb-1">
-                INTERNACIONAL
+              <Link href="/esports" className="font-bold text-gray-900 hover:text-red-600 transition border-b-2 border-transparent hover:border-red-600 pb-1">
+                ESPORTS
               </Link>
-              <Link href="/economia" className="font-bold text-gray-900 hover:text-red-600 transition border-b-2 border-transparent hover:border-red-600 pb-1">
-                ECONOMÍA
+              <Link href="/influencer-pop" className="font-bold text-gray-900 hover:text-red-600 transition border-b-2 border-transparent hover:border-red-600 pb-1">
+                INFLUENCER/POP
               </Link>
               <Link href="/tecnologia" className="font-bold text-gray-900 hover:text-red-600 transition border-b-2 border-transparent hover:border-red-600 pb-1">
                 TECNOLOGÍA
-              </Link>
-              <Link href="/cultura" className="font-bold text-gray-900 hover:text-red-600 transition border-b-2 border-transparent hover:border-red-600 pb-1">
-                CULTURA
-              </Link>
-              <Link href="/deportes" className="font-bold text-gray-900 hover:text-red-600 transition border-b-2 border-transparent hover:border-red-600 pb-1">
-                DEPORTES
-              </Link>
-              <Link href="/opinion" className="font-bold text-gray-900 hover:text-red-600 transition border-b-2 border-transparent hover:border-red-600 pb-1">
-                OPINIÓN
               </Link>
             </div>
 

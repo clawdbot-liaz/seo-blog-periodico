@@ -84,14 +84,67 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* Más noticias */}
+      {/* Secciones por categoría */}
       <section className="container mx-auto px-4 py-12">
-        <div className="mb-12">
-          <h2 className="text-3xl font-bold font-serif mb-8 border-b-2 border-gray-300 pb-4">MÁS NOTICIAS</h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            {latestNews.slice(0, 6).map((post) => (
-              <NewsCard key={post.slug} post={post} variant="default" />
-            ))}
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+          {/* Última Hora */}
+          <div>
+            <div className="flex items-center gap-3 mb-6">
+              <div className="p-3 bg-red-100 rounded-lg">
+                <Zap className="h-6 w-6 text-red-600" />
+              </div>
+              <h3 className="text-2xl font-bold">ÚLTIMA HORA</h3>
+            </div>
+            <div className="space-y-6">
+              {newspaperPosts.filter(post => post.category === 'ÚLTIMA HORA').slice(0, 3).map((post) => (
+                <NewsCard key={post.slug} post={post} variant="compact" />
+              ))}
+            </div>
+          </div>
+
+          {/* ESPORTS */}
+          <div>
+            <div className="flex items-center gap-3 mb-6">
+              <div className="p-3 bg-blue-100 rounded-lg">
+                <Zap className="h-6 w-6 text-blue-600" />
+              </div>
+              <h3 className="text-2xl font-bold">ESPORTS</h3>
+            </div>
+            <div className="space-y-6">
+              {newspaperPosts.filter(post => post.category === 'ESPORTS').slice(0, 3).map((post) => (
+                <NewsCard key={post.slug} post={post} variant="compact" />
+              ))}
+            </div>
+          </div>
+
+          {/* INFLUENCER/POP */}
+          <div>
+            <div className="flex items-center gap-3 mb-6">
+              <div className="p-3 bg-purple-100 rounded-lg">
+                <Zap className="h-6 w-6 text-purple-600" />
+              </div>
+              <h3 className="text-2xl font-bold">INFLUENCER/POP</h3>
+            </div>
+            <div className="space-y-6">
+              {newspaperPosts.filter(post => post.category === 'INFLUENCER/POP').slice(0, 3).map((post) => (
+                <NewsCard key={post.slug} post={post} variant="compact" />
+              ))}
+            </div>
+          </div>
+
+          {/* TECNOLOGÍA */}
+          <div>
+            <div className="flex items-center gap-3 mb-6">
+              <div className="p-3 bg-green-100 rounded-lg">
+                <Zap className="h-6 w-6 text-green-600" />
+              </div>
+              <h3 className="text-2xl font-bold">TECNOLOGÍA</h3>
+            </div>
+            <div className="space-y-6">
+              {newspaperPosts.filter(post => post.category === 'TECNOLOGÍA').slice(0, 3).map((post) => (
+                <NewsCard key={post.slug} post={post} variant="compact" />
+              ))}
+            </div>
           </div>
         </div>
 
@@ -103,9 +156,9 @@ export default async function Home() {
             </div>
             DESTACADOS DEL DÍA
           </h3>
-          <div className="grid md:grid-cols-2 gap-8">
-            {trendingNews.map((post) => (
-              <NewsCard key={post.slug} post={post} variant="featured" />
+          <div className="grid md:grid-cols-3 gap-8">
+            {newspaperPosts.filter(post => post.isFeatured).map((post) => (
+              <NewsCard key={post.slug} post={post} variant="default" />
             ))}
           </div>
         </div>

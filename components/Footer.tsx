@@ -40,13 +40,10 @@ export default function Footer() {
           <div>
             <h4 className="text-lg font-bold mb-6 border-l-4 border-red-600 pl-3">SECCIONES</h4>
             <ul className="space-y-3">
-              <li><a href="/nacional" className="text-gray-400 hover:text-white transition">Nacional</a></li>
-              <li><a href="/internacional" className="text-gray-400 hover:text-white transition">Internacional</a></li>
-              <li><a href="/economia" className="text-gray-400 hover:text-white transition">Economía</a></li>
+              <li><a href="/ultima-hora" className="text-gray-400 hover:text-white transition">Última Hora</a></li>
+              <li><a href="/esports" className="text-gray-400 hover:text-white transition">ESPORTS</a></li>
+              <li><a href="/influencer-pop" className="text-gray-400 hover:text-white transition">Influencer/Pop</a></li>
               <li><a href="/tecnologia" className="text-gray-400 hover:text-white transition">Tecnología</a></li>
-              <li><a href="/cultura" className="text-gray-400 hover:text-white transition">Cultura</a></li>
-              <li><a href="/deportes" className="text-gray-400 hover:text-white transition">Deportes</a></li>
-              <li><a href="/opinion" className="text-gray-400 hover:text-white transition">Opinión</a></li>
             </ul>
           </div>
 

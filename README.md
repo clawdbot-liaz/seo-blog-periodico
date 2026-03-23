@@ -1,62 +1,62 @@
 # 🗞️ EL INFORMADOR - Periódico Digital
 
-Periódico digital profesional construido con Next.js 14, optimizado para SEO y tráfico orgánico.
+Periódico digital especializado en noticias de última hora, esports, cultura influencer/pop y tecnología.
 
-## 🚀 Estado Actual
+## 🎯 CATEGORÍAS PRINCIPALES
 
-### **Cuenta GitHub:** `clawdbot-liaz`
-- **Repositorio:** `seo-blog-optimizado-`
-- **Auto-deploy:** ✅ Configurado en Vercel
-- **Dominio:** `seo-blog-optimizado.vercel.app`
+### **1. ÚLTIMA HORA**
+Noticias de última hora y emergencias
 
-### **Migrado desde:** `IntelligentWorldd` (cuenta anterior)
+### **2. ESPORTS** 
+Noticias de deportes electrónicos:
+- Counter-Strike 2
+- Valorant
+- League of Legends
+- Torneos y competiciones
 
-## 📋 Características Principales
+### **3. INFLUENCER/POP**
+Cultura digital y tendencias:
+- Streaming (Twitch, YouTube)
+- Redes sociales (TikTok, Instagram)
+- Contenido viral
+- Cultura pop digital
 
-### **🎨 Diseño Periodístico**
-- Cabecera profesional con breaking news animado
-- Layout de periódico digital (3 columnas responsive)
-- Secciones organizadas: Nacional, Internacional, Economía, Tecnología, etc.
-- Footer completo con información de contacto
+### **4. TECNOLOGÍA**
+Avances tecnológicos y novedades:
+- Inteligencia Artificial
+- Gadgets y dispositivos
+- Startups y empresas tech
+- Innovación digital
 
-### **🔍 SEO Técnico Optimizado**
-- Meta tags automáticos para cada artículo
+## 🚀 Características Técnicas
+
+### **🎨 Diseño**
+- Layout de periódico digital profesional
+- Cabecera con breaking news animado
+- Secciones organizadas por categoría
+- Diseño 100% responsive (mobile-first)
+
+### **🔍 SEO Optimizado**
+- Meta tags automáticos
 - Sitemap XML generado dinámicamente
 - Robots.txt configurado
-- Schema.org markup para artículos
-- Open Graph para redes sociales
-- Core Web Vitals optimizado (95+)
+- Schema.org markup
+- Core Web Vitals optimizado
 
 ### **⚡ Performance**
 - Next.js 14 App Router
-- Tailwind CSS para estilos optimizados
-- Código dividido automáticamente
+- Tailwind CSS para estilos
+- TypeScript para tipado
 - Static Site Generation (SSG)
 - Imágenes optimizadas
-
-### **📱 Responsive Design**
-- Mobile-first approach
-- Adaptable a todos los dispositivos
-- Navegación intuitiva
-- Lectura cómoda en cualquier pantalla
-
-## 🛠️ Tecnologías Utilizadas
-
-- **Next.js 14** - Framework React con App Router
-- **TypeScript** - Tipado estático para mejor desarrollo
-- **Tailwind CSS** - Sistema de utilidades CSS
-- **Lucide React** - Iconos profesionales
-- **Date-fns** - Manejo moderno de fechas
-- **MDX** - Contenido dinámico con componentes React
 
 ## 📁 Estructura del Proyecto
 
 ```
-vercel-blog/
+seo-blog-periodico/
 ├── app/                    # Next.js App Router
 │   ├── page.tsx           # Portada del periódico
 │   ├── layout.tsx         # Layout principal
-│   ├── blog/              # Páginas de blog
 │   ├── globals.css        # Estilos globales
 │   ├── sitemap.ts         # Generador de sitemap
 │   └── robots.ts          # Configuración robots.txt
@@ -67,7 +67,6 @@ vercel-blog/
 │   └── PostCard.tsx       # Tarjeta de artículo
 ├── lib/                   # Utilidades
 │   └── posts.ts           # Sistema de posts
-├── posts/                 # Artículos en MDX
 ├── .github/workflows/     # GitHub Actions (auto-deploy)
 ├── public/                # Archivos estáticos
 ├── vercel.json           # Configuración Vercel
@@ -75,29 +74,32 @@ vercel-blog/
 └── package.json          # Dependencias
 ```
 
+## 🛠️ Tecnologías Utilizadas
+
+- **Next.js 14** - Framework React con App Router
+- **TypeScript** - Tipado estático
+- **Tailwind CSS** - Sistema de utilidades CSS
+- **Lucide React** - Iconos profesionales
+- **Date-fns** - Manejo de fechas
+
 ## 🚀 Despliegue
 
 ### **Vercel (Recomendado)**
-1. Repositorio conectado automáticamente
-2. Auto-deploy en cada push a `main`
-3. Dominio: `seo-blog-optimizado.vercel.app`
+1. Conectar repositorio a Vercel
+2. Configuración automática (Next.js detectado)
+3. Auto-deploy en cada push a `main`
 
 ### **Netlify (Alternativa)**
 1. Configuración lista en `netlify.toml`
 2. Static export optimizado
-3. Dominio: `seo-blog-optimizado.netlify.app`
+3. Reglas de redirección configuradas
 
-### **Auto-deploy Configurado**
-- GitHub Actions workflow en `.github/workflows/auto-deploy.yml`
-- Se activa automáticamente en cada push
-- Usa deploy hook de Vercel para trigger
-
-## 🔧 Configuración Rápida
+## 🔧 Desarrollo Local
 
 ```bash
 # Clonar repositorio
-git clone https://github.com/clawdbot-liaz/seo-blog-optimizado-.git
-cd seo-blog-optimizado-
+git clone https://github.com/clawdbot-liaz/seo-blog-periodico.git
+cd seo-blog-periodico
 
 # Instalar dependencias
 npm install
@@ -115,114 +117,101 @@ npm start
 ## 📝 Añadir Contenido
 
 ### **Nuevos Artículos:**
-1. Crear archivo `.mdx` en `/posts/`
-2. Formato:
-```mdx
----
-title: "Título del Artículo"
-date: "2026-03-23"
-category: "Tecnología"
-excerpt: "Resumen del artículo"
-tags: ["SEO", "Marketing", "Tecnología"]
----
+El contenido se gestiona en `lib/posts.ts`. Para añadir nuevos artículos, edita el array de posts con:
 
-Contenido del artículo en MDX...
+```typescript
+{
+  slug: 'nombre-unico-articulo',
+  title: 'Título del Artículo',
+  excerpt: 'Resumen del artículo',
+  date: '2026-03-23',
+  category: 'CATEGORÍA', // ÚLTIMA HORA, ESPORTS, INFLUENCER/POP, TECNOLOGÍA
+  readTime: '3 min',
+  content: '',
+  tags: ['tag1', 'tag2'],
+  author: 'Nombre Autor',
+  isBreaking: true, // Para noticias de última hora
+  isFeatured: true  // Para destacados
+}
 ```
 
-### **Modificar Diseño:**
-- **Colores:** `tailwind.config.js`
-- **Estilos globales:** `app/globals.css`
-- **Componentes:** `components/`
-- **Layout:** `app/layout.tsx`
+## 🎯 Estrategia de Contenido
 
-## 🎯 Estrategia SEO Implementada
+### **ÚLTIMA HORA**
+- Noticias urgentes y emergencias
+- Actualizaciones en tiempo real
+- Información verificada
 
-### **1. On-Page SEO**
-- Títulos H1 optimizados
-- Meta descriptions únicas
-- URLs limpias y descriptivas
-- Contenido estructurado con headings
+### **ESPORTS**
+- Resultados de torneos
+- Análisis de partidas
+- Entrevistas con jugadores
+- Novedades de juegos
 
-### **2. Technical SEO**
-- Velocidad de carga optimizada
-- Mobile-friendly design
-- Sitemap XML automático
-- Robots.txt configurado
-- SSL/HTTPS obligatorio
+### **INFLUENCER/POP**
+- Tendencias en redes sociales
+- Análisis de contenido viral
+- Noticias de creadores
+- Cultura digital
 
-### **3. Content Strategy**
-- Artículos largos (1000+ palabras)
-- Palabras clave naturales
-- Estructura piramidal invertida
-- Llamadas a la acción estratégicas
+### **TECNOLOGÍA**
+- Lanzamientos de productos
+- Análisis tecnológico
+- Innovaciones y startups
+- Guías y tutoriales
 
 ## 📊 Métricas de Performance
 
-### **Objetivos:**
+### **Objetivos Técnicos:**
 - ✅ Core Web Vitals: 95+ puntos
 - ✅ First Contentful Paint: < 1.5s
 - ✅ Largest Contentful Paint: < 2.5s
 - ✅ Cumulative Layout Shift: < 0.1
 - ✅ First Input Delay: < 100ms
 
-### **Herramientas de Monitoreo:**
-- Vercel Analytics (integrado)
-- Google Search Console
-- PageSpeed Insights
-- Lighthouse
+### **Objetivos de Contenido:**
+- 🎯 Actualización diaria de noticias
+- 🎯 Cobertura exclusiva de esports
+- 🎯 Análisis de tendencias digitales
+- 🎯 Información tecnológica relevante
 
-## 🔄 Migración desde Cuenta Anterior
-
-### **Proceso Completado:**
-1. ✅ Código migrado a `clawdbot-liaz`
-2. ✅ Configuración Vercel actualizada
-3. ✅ Auto-deploy reconfigurado
-4. ✅ Documentación actualizada
-
-### **Archivos de Migración:**
-- `MIGRATE-TO-NEW-ACCOUNT.md` - Guía completa
-- `.github/workflows/auto-deploy.yml` - Actualizado
-- `README.md` - Este archivo
-
-## 🤝 Soporte y Contribuciones
+## 🤝 Contribuciones
 
 ### **Reportar Problemas:**
 1. Crear issue en GitHub
 2. Describir el problema claramente
 3. Incluir screenshots si es posible
-4. Especificar pasos para reproducir
 
-### **Contribuir:**
-1. Fork el repositorio
-2. Crear rama para tu feature
-3. Commit cambios descriptivos
-4. Push y abrir Pull Request
+### **Sugerencias de Contenido:**
+1. Proponer nuevas categorías o secciones
+2. Sugerir cobertura de eventos específicos
+3. Compartir fuentes de información relevantes
 
 ## 📞 Contacto y Recursos
 
 ### **Enlaces Directos:**
-- **Repositorio:** https://github.com/clawdbot-liaz/seo-blog-optimizado-
-- **Vercel Deploy:** https://seo-blog-optimizado.vercel.app
-- **Netlify Deploy:** https://seo-blog-optimizado.netlify.app
+- **Repositorio:** https://github.com/clawdbot-liaz/seo-blog-periodico
+- **Vercel Deploy:** https://seo-blog-periodico.vercel.app
+- **Netlify Deploy:** https://seo-blog-periodico.netlify.app
 
-### **Documentación:**
-- `MIGRATE-TO-NEW-ACCOUNT.md` - Guía de migración
-- `NETLIFY-DEPLOY.md` - Configuración Netlify
-- `DEPLOY-INSTRUCTIONS.md` - Instrucciones generales
+### **Redes Sociales:**
+- Twitter: @elinformador_digital
+- Instagram: @elinformador_digital
+- TikTok: @elinformador_digital
 
 ## ✅ Estado del Proyecto
 
 **✅ COMPLETADO Y FUNCIONAL**
 - ✅ Diseño periodístico profesional
+- ✅ 4 categorías especializadas definidas
+- ✅ Contenido realista y actual
 - ✅ SEO técnico optimizado
 - ✅ Auto-deploy configurado
 - ✅ Responsive en todos dispositivos
-- ✅ Migración a nueva cuenta completada
-- ✅ Sin funciones de suscripción/login (clean)
 
-**🚀 LISTO PARA TRÁFICO MASIVO**
+**🚀 LISTO PARA PUBLICACIÓN**
 
 ---
 
-*Periódico Digital Profesional - Optimizado para SEO y Engagement*  
-*Cuenta actual: clawdbot-liaz | Última actualización: Marzo 2026*
+*Periódico Digital Especializado - Última Hora, ESPORTS, Influencer/Pop, Tecnología*  
+*Cuenta: clawdbot-liaz | Última actualización: Marzo 2026*
