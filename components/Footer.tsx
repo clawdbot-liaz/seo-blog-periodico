@@ -42,6 +42,7 @@ export default function Footer() {
             <ul className="space-y-3">
               <li><a href="/ultima-hora" className="text-gray-400 hover:text-white transition">Última Hora</a></li>
               <li><a href="/esports" className="text-gray-400 hover:text-white transition">ESPORTS</a></li>
+              <li><a href="/deportes" className="text-gray-400 hover:text-white transition">Deportes</a></li>
               <li><a href="/influencer-pop" className="text-gray-400 hover:text-white transition">Influencer/Pop</a></li>
               <li><a href="/tecnologia" className="text-gray-400 hover:text-white transition">Tecnología</a></li>
             </ul>
@@ -60,13 +61,13 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Contacto directo */}
+          {/* Contacto */}
           <div>
-            <h4 className="text-lg font-bold mb-6 border-l-4 border-red-600 pl-3">CONTACTO DIRECTO</h4>
+            <h4 className="text-lg font-bold mb-6 border-l-4 border-red-600 pl-3">CONTACTO</h4>
             <div className="text-gray-400 space-y-3">
-              <p>📧 redaccion@elinformador.com</p>
-              <p>📱 +34 900 123 456</p>
-              <p>🏢 Calle Periódico, 123, Madrid</p>
+              <p>📧 redaccion@elinformador.es</p>
+              <p>📧 publicidad@elinformador.es</p>
+              <p>🌐 www.elinformador.es</p>
               <p>🕒 Lunes a Viernes: 9:00 - 18:00</p>
             </div>
           </div>
@@ -92,10 +93,10 @@ export default function Footer() {
           <div>
             <h5 className="font-bold mb-4">CONTACTO</h5>
             <div className="text-gray-400 text-sm space-y-2">
-              <p>Redacción: redaccion@elinformador.com</p>
-              <p>Publicidad: publicidad@elinformador.com</p>
-              <p>Teléfono: +34 900 123 456</p>
-              <p>Dirección: Calle Periódico, 123, Madrid</p>
+              <p>Redacción: redaccion@elinformador.es</p>
+              <p>Publicidad: publicidad@elinformador.es</p>
+              <p>Soporte: soporte@elinformador.es</p>
+              <p>Web: www.elinformador.es</p>
             </div>
           </div>
 
@@ -122,7 +123,16 @@ export default function Footer() {
             </p>
           </div>
           <div className="text-center text-gray-500 text-xs mt-4">
-            <p>Este periódico se publica bajo licencia Creative Commons. Las opiniones son responsabilidad de sus autores.</p>
+            <div className="flex flex-wrap justify-center gap-4 mb-2">
+              <a href="/privacidad" className="hover:text-white transition">Política de Privacidad</a>
+              <span className="text-gray-600">•</span>
+              <a href="/cookies" className="hover:text-white transition">Política de Cookies</a>
+              <span className="text-gray-600">•</span>
+              <a href="/aviso-legal" className="hover:text-white transition">Aviso Legal</a>
+              <span className="text-gray-600">•</span>
+              <a href="/condiciones" className="hover:text-white transition">Términos y Condiciones</a>
+            </div>
+            <p>Este periódico cumple con el RGPD y la LOPDGDD. Las opiniones son responsabilidad de sus autores.</p>
           </div>
         </div>
       </div>

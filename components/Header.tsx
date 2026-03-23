@@ -48,7 +48,7 @@ export default function Header() {
               <span className="breaking-news text-sm">BREAKING</span>
               <div className="overflow-hidden">
                 <div className="animate-marquee whitespace-nowrap text-gray-800 font-semibold">
-                  • ÚLTIMA HORA: Incendio en edificio del centro de Madrid • ESPORTS: Team Spirit gana el Major de Berlín • INFLUENCER: Streamer baneado de Twitch • TECNOLOGÍA: Apple presenta nueva plataforma de IA •
+                  • ÚLTIMA HORA: Incendio en edificio del centro de Madrid • ESPORTS: Team Spirit gana el Major de Berlín • DEPORTES: Real Madrid clasificado para semifinales de Champions • INFLUENCER: Streamer baneado de Twitch • TECNOLOGÍA: Apple presenta nueva plataforma de IA •
                 </div>
               </div>
             </div>
@@ -70,6 +70,9 @@ export default function Header() {
               </Link>
               <Link href="/esports" className="font-bold text-gray-900 hover:text-red-600 transition border-b-2 border-transparent hover:border-red-600 pb-1">
                 ESPORTS
+              </Link>
+              <Link href="/deportes" className="font-bold text-gray-900 hover:text-red-600 transition border-b-2 border-transparent hover:border-red-600 pb-1">
+                DEPORTES
               </Link>
               <Link href="/influencer-pop" className="font-bold text-gray-900 hover:text-red-600 transition border-b-2 border-transparent hover:border-red-600 pb-1">
                 INFLUENCER/POP

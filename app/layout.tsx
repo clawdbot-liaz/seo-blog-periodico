@@ -4,27 +4,44 @@ import './globals.css'
 import { Analytics } from '@vercel/analytics/react'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import CookiesPopup from '@/components/CookiesPopup'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Blog SEO Optimizado - Alto Tráfico y Conversión',
-  description: 'Blog profesional optimizado para SEO con contenido de calidad para generar tráfico orgánico.',
-  keywords: ['blog', 'seo', 'marketing', 'contenido', 'tráfico web'],
-  authors: [{ name: 'Tu Nombre' }],
+  title: 'EL INFORMADOR - Periódico Digital',
+  description: 'Periódico digital especializado en noticias de última hora, esports, deportes, cultura influencer/pop y tecnología.',
+  keywords: ['noticias', 'última hora', 'esports', 'deportes', 'influencer', 'tecnología', 'periódico digital', 'actualidad'],
+  authors: [
+    { name: 'María Rodríguez' },
+    { name: 'Javi Espartano' },
+    { name: 'Ana López' },
+    { name: 'Carlos Méndez' },
+    { name: 'David Chen' }
+  ],
+  metadataBase: new URL('https://elinformador.es'),
   openGraph: {
     type: 'website',
     locale: 'es_ES',
-    url: 'https://tudominio.com',
-    title: 'Blog SEO Optimizado',
-    description: 'Blog profesional optimizado para SEO',
-    siteName: 'Blog SEO',
+    url: 'https://elinformador.es',
+    title: 'EL INFORMADOR - Periódico Digital',
+    description: 'Periódico digital especializado en noticias de última hora, esports, deportes, cultura influencer/pop y tecnología.',
+    siteName: 'EL INFORMADOR',
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'EL INFORMADOR - Periódico Digital',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Blog SEO Optimizado',
-    description: 'Blog profesional optimizado para SEO',
-    creator: '@tucuenta',
+    title: 'EL INFORMADOR - Periódico Digital',
+    description: 'Periódico digital especializado en noticias de última hora, esports, deportes, cultura influencer/pop y tecnología.',
+    creator: '@elinformador_es',
+    images: ['/twitter-image.png'],
   },
   robots: {
     index: true,
@@ -37,6 +54,12 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
+  verification: {
+    google: 'google-site-verification-code', // Añadir código real
+  },
+  alternates: {
+    canonical: 'https://elinformador.es',
+  },
 }
 
 export default function RootLayout({
@@ -48,10 +71,11 @@ export default function RootLayout({
     <html lang="es">
       <body className={`${inter.className} min-h-screen flex flex-col`}>
         <Header />
-        <main className="flex-grow container mx-auto px-4 py-8">
+        <main className="flex-grow">
           {children}
         </main>
         <Footer />
+        <CookiesPopup />
         <Analytics />
       </body>
     </html>

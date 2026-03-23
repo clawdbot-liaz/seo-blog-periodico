@@ -11,10 +11,19 @@ export interface Post {
   tags: string[]
   seoTitle?: string
   seoDescription?: string
-  author?: string
+  author: string  // Ahora es obligatorio
   isBreaking?: boolean
   isFeatured?: boolean
   imageUrl?: string
+}
+
+// Autores fijos por categoría
+const AUTHORS_BY_CATEGORY: Record<string, string> = {
+  'ÚLTIMA HORA': 'María Rodríguez',
+  'ESPORTS': 'Javi Espartano',
+  'INFLUENCER/POP': 'Ana López',
+  'TECNOLOGÍA': 'Carlos Méndez',
+  'DEPORTES': 'David Chen'
 }
 
 // Posts gestionados en memoria
@@ -22,6 +31,44 @@ export interface Post {
 export function getPosts(): Post[] {
   // Posts reales para las categorías definidas
   const posts: Post[] = [
+    // ÚLTIMA HORA - María Rodríguez
+    {
+      slug: 'incendio-edificio-madrid',
+      title: 'Gran incendio en edificio del centro de Madrid',
+      excerpt: 'Los bomberos trabajan para controlar las llamas en un edificio histórico de la calle Gran Vía.',
+      date: '2026-03-23',
+      category: 'ÚLTIMA HORA',
+      readTime: '2 min',
+      content: '',
+      tags: ['Madrid', 'Incendio', 'Emergencia', 'Bomberos'],
+      author: 'María Rodríguez',
+      isBreaking: true,
+      isFeatured: true
+    },
+    {
+      slug: 'huelga-transportes',
+      title: 'Huelga de transportes paraliza varias ciudades',
+      excerpt: 'Protestas por condiciones laborales afectan el transporte público en Madrid, Barcelona y Valencia.',
+      date: '2026-03-23',
+      category: 'ÚLTIMA HORA',
+      readTime: '3 min',
+      content: '',
+      tags: ['Huelga', 'Transporte', 'Protestas', 'Laboral'],
+      author: 'María Rodríguez'
+    },
+    {
+      slug: 'tormenta-fuerte-lluvias',
+      title: 'Alerta por fuertes lluvias en la costa mediterránea',
+      excerpt: 'La AEMET activa avisos naranja por riesgo de inundaciones en Valencia, Alicante y Murcia.',
+      date: '2026-03-22',
+      category: 'ÚLTIMA HORA',
+      readTime: '2 min',
+      content: '',
+      tags: ['Tormenta', 'Lluvias', 'AEMET', 'Alerta'],
+      author: 'María Rodríguez'
+    },
+    
+    // ESPORTS - Javi Espartano
     {
       slug: 'counter-strike-major-berlin',
       title: 'Team Spirit gana el Major de Berlín de Counter-Strike 2',
@@ -31,7 +78,7 @@ export function getPosts(): Post[] {
       readTime: '4 min',
       content: '',
       tags: ['Counter-Strike', 'Major', 'Team Spirit', 'Esports'],
-      author: 'Carlos Martínez',
+      author: 'Javi Espartano',
       isBreaking: true,
       isFeatured: true
     },
@@ -44,7 +91,7 @@ export function getPosts(): Post[] {
       readTime: '3 min',
       content: '',
       tags: ['Valorant', 'VCT', 'Riot Games', 'Competitivo'],
-      author: 'Ana López'
+      author: 'Javi Espartano'
     },
     {
       slug: 'league-of-legends-msi',
@@ -55,110 +102,115 @@ export function getPosts(): Post[] {
       readTime: '5 min',
       content: '',
       tags: ['League of Legends', 'T1', 'Faker', 'MSI'],
-      author: 'David Chen'
+      author: 'Javi Espartano'
     },
+    
+    // INFLUENCER/POP - Ana López
     {
       slug: 'streamer-baneado-twitch',
       title: 'Twitch banea a popular streamer por violación de TOS',
-      excerpt: 'La plataforma toma medidas drásticas contra uno de sus creadores más populares.',
+      excerpt: 'La plataforma toma medidas drásticas contra uno de sus creadores más populares tras múltiples advertencias.',
       date: '2026-03-23',
       category: 'INFLUENCER/POP',
       readTime: '3 min',
       content: '',
       tags: ['Twitch', 'Streaming', 'Ban', 'Controversia'],
-      author: 'María Rodríguez',
+      author: 'Ana López',
       isBreaking: true
     },
     {
       slug: 'tiktok-trend-viral',
       title: 'Nuevo desafío viral arrasa en TikTok',
-      excerpt: 'Millones de usuarios participan en el último trend que domina la plataforma.',
+      excerpt: 'Millones de usuarios participan en el último trend que domina la plataforma con más de 500M de visualizaciones.',
       date: '2026-03-22',
       category: 'INFLUENCER/POP',
       readTime: '2 min',
       content: '',
       tags: ['TikTok', 'Viral', 'Trend', 'Redes Sociales'],
-      author: 'Laura Gómez'
+      author: 'Ana López'
     },
     {
       slug: 'youtuber-colaboracion-mega',
       title: 'Colaboración histórica entre los YouTubers más grandes',
-      excerpt: 'Tres de los creadores más importantes se unen para un proyecto especial.',
+      excerpt: 'Tres de los creadores más importantes se unen para un proyecto especial que se estrenará en abril.',
       date: '2026-03-21',
       category: 'INFLUENCER/POP',
       readTime: '4 min',
       content: '',
       tags: ['YouTube', 'Colaboración', 'Creadores', 'Contenido'],
-      author: 'Sofía Torres'
+      author: 'Ana López'
     },
+    
+    // TECNOLOGÍA - Carlos Méndez
     {
       slug: 'apple-inteligencia-artificial',
       title: 'Apple presenta su nueva plataforma de IA integrada',
-      excerpt: 'La compañía revela "Apple Intelligence", su respuesta a ChatGPT y Gemini.',
+      excerpt: 'La compañía revela "Apple Intelligence", su respuesta a ChatGPT y Gemini, integrada en todos sus dispositivos.',
       date: '2026-03-23',
       category: 'TECNOLOGÍA',
       readTime: '6 min',
       content: '',
       tags: ['Apple', 'IA', 'Inteligencia Artificial', 'Tecnología'],
-      author: 'Alex Rivera',
+      author: 'Carlos Méndez',
       isFeatured: true
     },
     {
       slug: 'tesla-robotaxi-anuncio',
       title: 'Tesla anuncia fecha de lanzamiento para su Robotaxi',
-      excerpt: 'Elon Musk revela que el vehículo autónomo estará disponible en 2027.',
+      excerpt: 'Elon Musk revela que el vehículo autónomo estará disponible en 2027 con capacidad de conducción nivel 5.',
       date: '2026-03-22',
       category: 'TECNOLOGÍA',
       readTime: '5 min',
       content: '',
       tags: ['Tesla', 'Robotaxi', 'Elon Musk', 'Autónomo'],
-      author: 'Miguel Ángel'
+      author: 'Carlos Méndez'
     },
     {
       slug: 'meta-gafas-realidad-aumentada',
       title: 'Meta presenta sus nuevas gafas de realidad aumentada',
-      excerpt: 'El sucesor de Ray-Ban Stories llega con capacidades avanzadas de IA.',
+      excerpt: 'El sucesor de Ray-Ban Stories llega con capacidades avanzadas de IA y pantalla holográfica.',
       date: '2026-03-21',
       category: 'TECNOLOGÍA',
       readTime: '4 min',
       content: '',
       tags: ['Meta', 'Realidad Aumentada', 'Gafas', 'IA'],
-      author: 'Elena Vargas'
+      author: 'Carlos Méndez'
     },
+    
+    // DEPORTES - David Chen
     {
-      slug: 'incendio-edificio-madrid',
-      title: 'Gran incendio en edificio del centro de Madrid',
-      excerpt: 'Los bomberos trabajan para controlar las llamas en un edificio histórico.',
+      slug: 'real-madrid-champions',
+      title: 'Real Madrid se clasifica para semifinales de Champions',
+      excerpt: 'El equipo blanco supera al Manchester City en una eliminatoria épica en el Santiago Bernabéu.',
       date: '2026-03-23',
-      category: 'ÚLTIMA HORA',
-      readTime: '2 min',
+      category: 'DEPORTES',
+      readTime: '4 min',
       content: '',
-      tags: ['Madrid', 'Incendio', 'Emergencia', 'Bomberos'],
-      author: 'Redacción',
-      isBreaking: true,
+      tags: ['Fútbol', 'Real Madrid', 'Champions League', 'Manchester City'],
+      author: 'David Chen',
       isFeatured: true
     },
     {
-      slug: 'huelga-transportes',
-      title: 'Huelga de transportes paraliza varias ciudades',
-      excerpt: 'Protestas por condiciones laborales afectan el transporte público.',
-      date: '2026-03-23',
-      category: 'ÚLTIMA HORA',
+      slug: 'nba-playoffs',
+      title: 'Los Lakers se enfrentan a los Celtics en finales de conferencia',
+      excerpt: 'La rivalidad histórica se reaviva en los playoffs de la NBA 2025-2026.',
+      date: '2026-03-22',
+      category: 'DEPORTES',
       readTime: '3 min',
       content: '',
-      tags: ['Huelga', 'Transporte', 'Protestas', 'Laboral'],
-      author: 'Redacción'
+      tags: ['NBA', 'Lakers', 'Celtics', 'Playoffs'],
+      author: 'David Chen'
     },
     {
-      slug: 'tormenta-fuerte-lluvias',
-      title: 'Alerta por fuertes lluvias en la costa mediterránea',
-      excerpt: 'La AEMET activa avisos por riesgo de inundaciones.',
-      date: '2026-03-22',
-      category: 'ÚLTIMA HORA',
-      readTime: '2 min',
+      slug: 'formula-1-gran-premio',
+      title: 'Verstappen domina el Gran Premio de Australia',
+      excerpt: 'El piloto de Red Bull consigue su tercera victoria consecutiva de la temporada.',
+      date: '2026-03-21',
+      category: 'DEPORTES',
+      readTime: '3 min',
       content: '',
-      tags: ['Tormenta', 'Lluvias', 'AEMET', 'Alerta'],
-      author: 'Redacción'
+      tags: ['Fórmula 1', 'Verstappen', 'Red Bull', 'Australia'],
+      author: 'David Chen'
     }
   ]
 

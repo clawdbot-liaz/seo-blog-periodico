@@ -86,7 +86,7 @@ export default async function Home() {
 
       {/* Secciones por categoría */}
       <section className="container mx-auto px-4 py-12">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
           {/* Última Hora */}
           <div>
             <div className="flex items-center gap-3 mb-6">
@@ -112,6 +112,21 @@ export default async function Home() {
             </div>
             <div className="space-y-6">
               {newspaperPosts.filter(post => post.category === 'ESPORTS').slice(0, 3).map((post) => (
+                <NewsCard key={post.slug} post={post} variant="compact" />
+              ))}
+            </div>
+          </div>
+
+          {/* DEPORTES */}
+          <div>
+            <div className="flex items-center gap-3 mb-6">
+              <div className="p-3 bg-yellow-100 rounded-lg">
+                <Zap className="h-6 w-6 text-yellow-600" />
+              </div>
+              <h3 className="text-2xl font-bold">DEPORTES</h3>
+            </div>
+            <div className="space-y-6">
+              {newspaperPosts.filter(post => post.category === 'DEPORTES').slice(0, 3).map((post) => (
                 <NewsCard key={post.slug} post={post} variant="compact" />
               ))}
             </div>
