@@ -286,7 +286,7 @@ export default function CookiesPage() {
               <strong>Responsable del tratamiento:</strong> EL INFORMADOR
             </p>
             <p className="text-gray-700">
-              <strong>Correo electrónico:</strong> privacidad@elinformador.es
+              <strong>Correo electrónico:</strong> contacto@elinformador.es
             </p>
             <p className="text-gray-700">
               <strong>Dirección web:</strong> https://elinformador.es/cookies

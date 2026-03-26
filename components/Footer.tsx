@@ -7,7 +7,7 @@ export default function Footer() {
     <footer className="bg-gray-900 text-white mt-16 border-t-4 border-red-600">
       {/* Main footer */}
       <div className="container mx-auto px-4 py-12">
-        <div className="grid md:grid-cols-4 gap-8">
+        <div className="grid md:grid-cols-3 gap-8">
           {/* Brand */}
           <div>
             <div className="flex items-center gap-3 mb-6">
@@ -48,26 +48,12 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Servicios */}
-          <div>
-            <h4 className="text-lg font-bold mb-6 border-l-4 border-red-600 pl-3">SERVICIOS</h4>
-            <ul className="space-y-3">
-              <li><a href="/suscripciones" className="text-gray-400 hover:text-white transition">Suscripciones</a></li>
-              <li><a href="/publicidad" className="text-gray-400 hover:text-white transition">Publicidad</a></li>
-              <li><a href="/archivo" className="text-gray-400 hover:text-white transition">Archivo</a></li>
-              <li><a href="/contacto" className="text-gray-400 hover:text-white transition">Contacto</a></li>
-              <li><a href="/redaccion" className="text-gray-400 hover:text-white transition">Redacción</a></li>
-              <li><a href="/empleo" className="text-gray-400 hover:text-white transition">Empleo</a></li>
-            </ul>
-          </div>
-
           {/* Contacto */}
           <div>
             <h4 className="text-lg font-bold mb-6 border-l-4 border-red-600 pl-3">CONTACTO</h4>
             <div className="text-gray-400 space-y-3">
-              <p>Redacción: redaccion@elinformador.es</p>
+              <p>Contacto: contacto@elinformador.es</p>
               <p>Publicidad: publicidad@elinformador.es</p>
-              <p>Soporte: soporte@elinformador.es</p>
               <p>Web: www.elinformador.es</p>
               <p>Horario: Lunes a Viernes 9:00 - 18:00</p>
             </div>

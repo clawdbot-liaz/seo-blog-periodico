@@ -52,7 +52,7 @@ export default function LegalNoticePage() {
                 <Mail className="h-5 w-5 text-gray-600 mt-1" />
                 <div>
                   <h3 className="font-bold mb-1">Correo electrónico</h3>
-                  <p className="text-gray-700">legal@elinformador.es</p>
+                  <p className="text-gray-700">contacto@elinformador.es</p>
                 </div>
               </div>
               
@@ -339,7 +339,7 @@ export default function LegalNoticePage() {
               <strong>Responsable:</strong> EL INFORMADOR MEDIA S.L.
             </p>
             <p className="text-gray-700">
-              <strong>Correo electrónico:</strong> legal@elinformador.es
+              <strong>Correo electrónico:</strong> contacto@elinformador.es
             </p>
             <p className="text-gray-700">
               <strong>Dirección web:</strong> https://elinformador.es/aviso-legal

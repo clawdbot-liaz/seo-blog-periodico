@@ -333,7 +333,7 @@ export default function PrivacyPage() {
               <strong>Responsable del tratamiento:</strong> EL INFORMADOR
             </p>
             <p className="text-gray-700">
-              <strong>Correo electrónico:</strong> privacidad@elinformador.es
+              <strong>Correo electrónico:</strong> contacto@elinformador.es
             </p>
             <p className="text-gray-700">
               <strong>Dirección web:</strong> https://elinformador.es/privacidad
@@ -342,7 +342,7 @@ export default function PrivacyPage() {
           
           <p className="text-gray-600">
             También puede contactar con nuestra Delegada de Protección de Datos (DPD) en:{' '}
-            <strong>dpo@elinformador.es</strong>
+            <strong>contacto@elinformador.es</strong>
           </p>
           
           <div className="mt-8 pt-6 border-t border-blue-200">
