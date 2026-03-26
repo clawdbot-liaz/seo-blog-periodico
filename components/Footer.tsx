@@ -1,4 +1,4 @@
-import { Newspaper, Facebook, Twitter, Instagram, Youtube } from 'lucide-react'
+import { Newspaper } from 'lucide-react'
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
@@ -17,23 +17,9 @@ export default function Footer() {
                 <p className="text-gray-400 text-sm">Diario Digital</p>
               </div>
             </div>
-            <p className="text-gray-400 mb-6">
+            <p className="text-gray-400">
               El periódico digital líder en noticias de última hora, análisis en profundidad y periodismo de calidad.
             </p>
-            <div className="flex gap-4">
-              <a href="#" className="text-gray-400 hover:text-white transition">
-                <Facebook className="h-5 w-5" />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-white transition">
-                <Twitter className="h-5 w-5" />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-white transition">
-                <Instagram className="h-5 w-5" />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-white transition">
-                <Youtube className="h-5 w-5" />
-              </a>
-            </div>
           </div>
 
           {/* Secciones */}
