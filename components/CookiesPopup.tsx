@@ -41,8 +41,8 @@ export default function CookiesPopup() {
       <div className="bg-white rounded-xl shadow-2xl border border-gray-200 p-6 animate-fade-in-up">
         <div className="flex items-start justify-between mb-4">
           <div className="flex items-center gap-3">
-            <div className="p-2 bg-blue-100 rounded-lg">
-              <Cookie className="h-6 w-6 text-blue-600" />
+            <div className="p-2 bg-red-100 rounded-lg">
+              <Cookie className="h-6 w-6 text-red-600" />
             </div>
             <h3 className="text-lg font-bold text-gray-900">Configuración de Cookies</h3>
           </div>
@@ -94,7 +94,7 @@ export default function CookiesPopup() {
           
           <button
             onClick={acceptCookies}
-            className="px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition flex-1"
+            className="px-6 py-3 bg-red-600 text-white font-medium rounded-lg hover:bg-red-700 transition flex-1"
           >
             Aceptar todas
           </button>
@@ -105,7 +105,7 @@ export default function CookiesPopup() {
             Al continuar navegando, aceptas nuestra{' '}
             <a 
               href="/privacidad" 
-              className="text-blue-600 hover:text-blue-800 underline"
+              className="text-red-600 hover:text-red-800 underline"
               onClick={(e) => {
                 e.preventDefault()
                 openPrivacyPolicy()

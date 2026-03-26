@@ -6,8 +6,8 @@ export default function PrivacyPage() {
     <div className="container mx-auto px-4 py-12 max-w-4xl">
       {/* Header */}
       <div className="text-center mb-12">
-        <div className="inline-flex items-center justify-center p-4 bg-blue-100 rounded-full mb-6">
-          <Shield className="h-12 w-12 text-blue-600" />
+        <div className="inline-flex items-center justify-center p-4 bg-red-100 rounded-full mb-6">
+          <Shield className="h-12 w-12 text-red-600" />
         </div>
         <h1 className="text-4xl font-bold font-serif mb-4">Política de Privacidad</h1>
         <p className="text-gray-600 text-lg">
@@ -67,8 +67,8 @@ export default function PrivacyPage() {
           3. Uso de Cookies
         </h2>
         
-        <div className="bg-blue-50 rounded-xl p-6 mb-6">
-          <h3 className="font-bold text-lg mb-3 text-blue-800">Tipos de cookies que utilizamos</h3>
+        <div className="bg-red-50 rounded-xl p-6 mb-6">
+          <h3 className="font-bold text-lg mb-3 text-red-800">Tipos de cookies que utilizamos</h3>
           <div className="grid md:grid-cols-2 gap-4">
             <div>
               <h4 className="font-semibold mb-2">Cookies Esenciales</h4>
@@ -124,8 +124,8 @@ export default function PrivacyPage() {
           </div>
           
           <div className="flex items-start gap-3">
-            <div className="p-2 bg-blue-100 rounded-lg mt-1">
-              <div className="h-4 w-4 bg-blue-600 rounded-full"></div>
+            <div className="p-2 bg-red-100 rounded-lg mt-1">
+              <div className="h-4 w-4 bg-red-600 rounded-full"></div>
             </div>
             <div>
               <h3 className="font-bold mb-1">Análisis y estadísticas</h3>
@@ -219,8 +219,8 @@ export default function PrivacyPage() {
             </div>
           </div>
           
-          <div className="mt-6 p-4 bg-blue-50 rounded-lg">
-            <p className="text-blue-800">
+          <div className="mt-6 p-4 bg-red-50 rounded-lg">
+            <p className="text-red-800">
               Para ejercer cualquiera de estos derechos, puede contactarnos en:{' '}
               <strong>privacidad@elinformador.es</strong>
             </p>
@@ -325,7 +325,7 @@ export default function PrivacyPage() {
       <section className="mb-12">
         <h2 className="text-2xl font-bold mb-6 border-b-2 border-gray-200 pb-3">10. Contacto</h2>
         
-        <div className="bg-blue-50 rounded-xl p-8 text-center">
+        <div className="bg-red-50 rounded-xl p-8 text-center">
           <h3 className="text-xl font-bold mb-4">¿Tiene preguntas sobre nuestra Política de Privacidad?</h3>
           
           <div className="space-y-3 mb-6">
@@ -369,7 +369,7 @@ export default function PrivacyPage() {
           <div className="mt-4 md:mt-0">
             <Link 
               href="/"
-              className="px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition"
+              className="px-6 py-3 bg-red-600 text-white font-medium rounded-lg hover:bg-red-700 transition"
             >
               Volver al inicio
             </Link>

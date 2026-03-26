@@ -65,10 +65,11 @@ export default function Footer() {
           <div>
             <h4 className="text-lg font-bold mb-6 border-l-4 border-red-600 pl-3">CONTACTO</h4>
             <div className="text-gray-400 space-y-3">
-              <p>📧 redaccion@elinformador.es</p>
-              <p>📧 publicidad@elinformador.es</p>
-              <p>🌐 www.elinformador.es</p>
-              <p>🕒 Lunes a Viernes: 9:00 - 18:00</p>
+              <p>Redacción: redaccion@elinformador.es</p>
+              <p>Publicidad: publicidad@elinformador.es</p>
+              <p>Soporte: soporte@elinformador.es</p>
+              <p>Web: www.elinformador.es</p>
+              <p>Horario: Lunes a Viernes 9:00 - 18:00</p>
             </div>
           </div>
         </div>
@@ -77,14 +78,14 @@ export default function Footer() {
         <div className="border-t border-gray-800 my-8"></div>
 
         {/* Bottom footer */}
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 gap-8">
           {/* Legal */}
           <div>
             <h5 className="font-bold mb-4">LEGAL</h5>
             <div className="text-gray-400 text-sm space-y-2">
               <a href="/privacidad" className="block hover:text-white">Política de Privacidad</a>
               <a href="/cookies" className="block hover:text-white">Política de Cookies</a>
-              <a href="/terminos" className="block hover:text-white">Términos y Condiciones</a>
+              <a href="/condiciones" className="block hover:text-white">Términos y Condiciones</a>
               <a href="/aviso-legal" className="block hover:text-white">Aviso Legal</a>
             </div>
           </div>
@@ -99,17 +100,6 @@ export default function Footer() {
               <p>Web: www.elinformador.es</p>
             </div>
           </div>
-
-          {/* Certificaciones */}
-          <div>
-            <h5 className="font-bold mb-4">CERTIFICACIONES</h5>
-            <div className="text-gray-400 text-sm space-y-2">
-              <p>✅ Miembro de la AEDE</p>
-              <p>✅ Verificado por IAB Spain</p>
-              <p>✅ Certificado SSL</p>
-              <p>✅ GDPR Compliant</p>
-            </div>
-          </div>
         </div>
       </div>
 
@@ -118,9 +108,6 @@ export default function Footer() {
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center text-gray-400 text-sm">
             <p>© {currentYear} EL INFORMADOR. Todos los derechos reservados.</p>
-            <p className="mt-2 md:mt-0">
-              ISSN: 1234-5678 • Depósito Legal: M-12345-{currentYear}
-            </p>
           </div>
           <div className="text-center text-gray-500 text-xs mt-4">
             <div className="flex flex-wrap justify-center gap-4 mb-2">
@@ -132,7 +119,7 @@ export default function Footer() {
               <span className="text-gray-600">•</span>
               <a href="/condiciones" className="hover:text-white transition">Términos y Condiciones</a>
             </div>
-            <p>Este periódico cumple con el RGPD y la LOPDGDD. Las opiniones son responsabilidad de sus autores.</p>
+            <p>Las opiniones expresadas en los artículos son responsabilidad exclusiva de sus autores.</p>
           </div>
         </div>
       </div>
