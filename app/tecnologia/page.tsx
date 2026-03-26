@@ -182,7 +182,7 @@ export default function TecnologiaPage() {
               la computación cuántica promete resolver problemas imposibles para la tecnología actual.
             </p>
             <div className="text-sm text-gray-600">
-              <Zap className="inline h-4 w-4 mr-1" />
+              <TrendingUp className="inline h-4 w-4 mr-1" />
               $10B inversión global 2025-2030
             </div>
           </div>

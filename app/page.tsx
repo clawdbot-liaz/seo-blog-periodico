@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { getPosts } from '@/lib/posts'
 import NewsCard from '@/components/NewsCard'
-import { Newspaper, TrendingUp, Zap } from 'lucide-react'
+import { Newspaper, TrendingUp, Zap, Trophy, Users, Cpu, AlertTriangle } from 'lucide-react'
 
 export default async function Home() {
   const posts = await getPosts()
@@ -54,7 +54,7 @@ export default async function Home() {
             {/* Sidebar - Última hora */}
             <div className="bg-gray-50 rounded-xl p-6 border border-gray-200">
               <div className="flex items-center gap-2 mb-6">
-                <Zap className="h-5 w-5 text-red-600" />
+                <AlertTriangle className="h-5 w-5 text-red-600" />
                 <h3 className="text-xl font-bold">ÚLTIMA HORA</h3>
               </div>
               
@@ -91,7 +91,7 @@ export default async function Home() {
           <div>
             <div className="flex items-center gap-3 mb-6">
               <div className="p-3 bg-red-100 rounded-lg">
-                <Zap className="h-6 w-6 text-red-600" />
+                <AlertTriangle className="h-6 w-6 text-red-600" />
               </div>
               <h3 className="text-2xl font-bold">ÚLTIMA HORA</h3>
             </div>
@@ -106,7 +106,7 @@ export default async function Home() {
           <div>
             <div className="flex items-center gap-3 mb-6">
               <div className="p-3 bg-blue-100 rounded-lg">
-                <Zap className="h-6 w-6 text-blue-600" />
+                <Trophy className="h-6 w-6 text-blue-600" />
               </div>
               <h3 className="text-2xl font-bold">ESPORTS</h3>
             </div>
@@ -121,7 +121,7 @@ export default async function Home() {
           <div>
             <div className="flex items-center gap-3 mb-6">
               <div className="p-3 bg-yellow-100 rounded-lg">
-                <Zap className="h-6 w-6 text-yellow-600" />
+                <Trophy className="h-6 w-6 text-yellow-600" />
               </div>
               <h3 className="text-2xl font-bold">DEPORTES</h3>
             </div>
@@ -136,7 +136,7 @@ export default async function Home() {
           <div>
             <div className="flex items-center gap-3 mb-6">
               <div className="p-3 bg-purple-100 rounded-lg">
-                <Zap className="h-6 w-6 text-purple-600" />
+                <Users className="h-6 w-6 text-purple-600" />
               </div>
               <h3 className="text-2xl font-bold">INFLUENCER/POP</h3>
             </div>
@@ -151,7 +151,7 @@ export default async function Home() {
           <div>
             <div className="flex items-center gap-3 mb-6">
               <div className="p-3 bg-green-100 rounded-lg">
-                <Zap className="h-6 w-6 text-green-600" />
+                <Cpu className="h-6 w-6 text-green-600" />
               </div>
               <h3 className="text-2xl font-bold">TECNOLOGÍA</h3>
             </div>

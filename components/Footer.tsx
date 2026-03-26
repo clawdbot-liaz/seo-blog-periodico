@@ -74,33 +74,7 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Divider */}
-        <div className="border-t border-gray-800 my-8"></div>
 
-        {/* Bottom footer */}
-        <div className="grid md:grid-cols-2 gap-8">
-          {/* Legal */}
-          <div>
-            <h5 className="font-bold mb-4">LEGAL</h5>
-            <div className="text-gray-400 text-sm space-y-2">
-              <a href="/privacidad" className="block hover:text-white">Política de Privacidad</a>
-              <a href="/cookies" className="block hover:text-white">Política de Cookies</a>
-              <a href="/condiciones" className="block hover:text-white">Términos y Condiciones</a>
-              <a href="/aviso-legal" className="block hover:text-white">Aviso Legal</a>
-            </div>
-          </div>
-
-          {/* Contacto */}
-          <div>
-            <h5 className="font-bold mb-4">CONTACTO</h5>
-            <div className="text-gray-400 text-sm space-y-2">
-              <p>Redacción: redaccion@elinformador.es</p>
-              <p>Publicidad: publicidad@elinformador.es</p>
-              <p>Soporte: soporte@elinformador.es</p>
-              <p>Web: www.elinformador.es</p>
-            </div>
-          </div>
-        </div>
       </div>
 
       {/* Copyright */}
