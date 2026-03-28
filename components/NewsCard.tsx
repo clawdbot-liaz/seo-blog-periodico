@@ -71,7 +71,7 @@ export default function NewsCard({ post, variant = 'default' }: NewsCardProps) {
 
       {/* Content */}
       <div className="p-6">
-        <Link href={`/noticias/${post.slug}`}>
+        <Link href={`/articulos/${post.slug}`}>
           <h3 className={style.title}>
             {post.title}
           </h3>
@@ -106,7 +106,7 @@ export default function NewsCard({ post, variant = 'default' }: NewsCardProps) {
           
           {variant !== 'compact' && (
             <Link 
-              href={`/noticias/${post.slug}`}
+              href={`/articulos/${post.slug}`}
               className={`flex items-center gap-1 font-semibold ${variant === 'headline' ? 'text-red-300 hover:text-white' : 'text-red-600 hover:text-red-800'} transition`}
             >
               Leer más
