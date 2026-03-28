@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { Calendar, Clock, User, Tag, ArrowLeft, Share2, Bookmark } from 'lucide-react'
-import { getRelatedPosts } from '@/lib/posts'
+import { getRelatedPosts, getPostBySlug } from '@/lib/posts'
 
 // Función para obtener el color de la categoría
 function getCategoryColor(category: string) {
@@ -26,9 +26,24 @@ function formatDate(dateString: string) {
   return date.toLocaleDateString('es-ES', { day: 'numeric', month: 'short' })
 }
 
+// Datos del artículo real (Accidente tren alta velocidad)
+const currentArticle = {
+  slug: 'accidente-tren-alta-velocidad',
+  title: 'Accidente en tren de alta velocidad cerca de Zaragoza: 12 heridos leves',
+  excerpt: 'Un tren AVE que cubría la ruta Madrid-Barcelona ha descarrilado parcialmente esta mañana cerca de la localidad zaragozana de Casetas.',
+  date: '2026-03-28',
+  category: 'ÚLTIMA HORA',
+  readTime: '4 min',
+  content: 'Un tren de alta velocidad AVE que realizaba el trayecto Madrid-Barcelona ha sufrido un accidente esta mañana a las 8:45 horas cerca de la estación de Casetas, en Zaragoza. Según fuentes de Renfe, el convoy transportaba 187 pasajeros en el momento del incidente. Doce personas han resultado heridas leves y han sido trasladadas al Hospital Universitario Miguel Servet de Zaragoza como medida preventiva. Los servicios de emergencia trabajan en la zona para asistir a los viajeros y evaluar los daños en la infraestructura ferroviaria.',
+  tags: ['Accidente', 'Tren', 'AVE', 'Zaragoza', 'Emergencia', 'Transporte'],
+  author: 'María Rodríguez',
+  isBreaking: true,
+  isFeatured: true
+}
+
 export default function ArticuloEjemplo() {
-  // Obtener artículos relacionados (basados en el artículo actual "incendio-edificio-madrid")
-  const relatedPosts = getRelatedPosts('incendio-edificio-madrid', 3)
+  // Obtener artículos relacionados (basados en el artículo actual)
+  const relatedPosts = getRelatedPosts(currentArticle.slug, 3)
 
   return (
     <div className="min-h-screen bg-[#f5f4f0]">
@@ -64,28 +79,35 @@ export default function ArticuloEjemplo() {
           {/* Categoría */}
           <div className="mb-6">
             <span className="inline-flex items-center gap-2 bg-red-600 text-white px-3 py-1.5 text-xs font-bold tracking-widest uppercase">
-              ÚLTIMA HORA
+              {currentArticle.category}
             </span>
           </div>
 
           {/* Título */}
           <h1 className="text-4xl md:text-5xl font-black text-gray-950 leading-tight mb-6">
-            Gran incendio en edificio histórico del centro de Madrid: Bomberos trabajan para controlar las llamas
+            {currentArticle.title}
           </h1>
 
           {/* Metadatos */}
           <div className="flex flex-wrap items-center gap-6 text-gray-600 mb-8 pb-8 border-b border-gray-200">
             <div className="flex items-center gap-2">
               <User className="h-4 w-4" />
-              <span className="font-medium">María Rodríguez</span>
+              <span className="font-medium">{currentArticle.author}</span>
             </div>
             <div className="flex items-center gap-2">
               <Calendar className="h-4 w-4" />
-              <time dateTime="2026-03-23">23 de marzo de 2026</time>
+              <time dateTime={currentArticle.date}>
+                {new Date(currentArticle.date).toLocaleDateString('es-ES', {
+                  weekday: 'long',
+                  year: 'numeric',
+                  month: 'long',
+                  day: 'numeric'
+                })}
+              </time>
             </div>
             <div className="flex items-center gap-2">
               <Clock className="h-4 w-4" />
-              <span>5 min de lectura</span>
+              <span>{currentArticle.readTime} de lectura</span>
             </div>
           </div>
 
@@ -94,16 +116,16 @@ export default function ArticuloEjemplo() {
             <div className="relative w-full h-64 md:h-96 bg-gradient-to-r from-gray-800 to-gray-900 rounded-lg overflow-hidden">
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="text-white text-center">
-                  <div className="text-4xl font-bold mb-2">📰</div>
-                  <p className="text-lg font-medium">Imagen: Incendio en edificio histórico</p>
+                  <div className="text-4xl font-bold mb-2">🚆</div>
+                  <p className="text-lg font-medium">Imagen: Tren AVE en la vía</p>
                 </div>
               </div>
               <div className="absolute bottom-4 left-4 bg-black/70 text-white text-xs px-3 py-1.5 rounded">
-                Foto: Bomberos de Madrid
+                Foto: Servicios de emergencia
               </div>
             </div>
             <p className="text-gray-500 text-sm mt-3 text-center">
-              Los bomberos trabajan en el control del incendio en un edificio histórico de la calle Gran Vía.
+              Los servicios de emergencia trabajan en el lugar del accidente cerca de la estación de Casetas, Zaragoza.
             </p>
           </div>
         </header>
@@ -113,110 +135,99 @@ export default function ArticuloEjemplo() {
           {/* Lead / Entradilla */}
           <div className="bg-red-50 border-l-4 border-red-600 pl-6 py-4 mb-8">
             <p className="text-xl font-semibold text-gray-800 italic">
-              Un incendio de grandes proporciones se declaró esta tarde en un edificio histórico de la calle Gran Vía. 
-              Los bomberos trabajan intensamente para controlar las llamas mientras se procede a la evacuación de residentes.
+              {currentArticle.excerpt}
             </p>
           </div>
 
           {/* Párrafos del artículo */}
           <div className="space-y-6 text-gray-800 leading-relaxed">
             <p className="text-lg">
-              <strong>Madrid, 23 de marzo de 2026</strong> - Un incendio de origen aún por determinar se ha declarado 
-              esta tarde en un edificio histórico situado en el número 45 de la calle Gran Vía, en pleno centro de Madrid. 
-              El fuego, que comenzó alrededor de las 16:30 horas, ha provocado una importante movilización de los servicios 
-              de emergencia.
+              <strong>Zaragoza, 28 de marzo de 2026</strong> - {currentArticle.content}
             </p>
 
-            <p>
-              Según fuentes del Cuerpo de Bomberos de Madrid, <strong>más de 50 efectivos</strong> trabajan en la extinción 
-              del incendio, que afecta principalmente a la tercera y cuarta planta del inmueble, construido en 1928 y 
-              catalogado como Bien de Interés Cultural. Hasta el momento, no se han registrado víctimas mortales, aunque 
-              tres personas han sido atendidas por inhalación de humo y trasladadas al Hospital Clínico San Carlos como 
-              medida preventiva.
-            </p>
-
-            <h2 className="text-2xl font-bold mt-10 mb-6 text-gray-900">Evacuación ordenada</h2>
+            <h2 className="text-2xl font-bold mt-10 mb-6 text-gray-900">Respuesta de emergencia inmediata</h2>
 
             <p>
-              La Policía Municipal ha establecido un <strong>perímetro de seguridad</strong> de 200 metros alrededor del 
-              edificio, afectando al tráfico en la zona. Los residentes de los edificios colindantes han sido evacuados 
-              de manera preventiva, mientras los bomberos intentan evitar que el fuego se propague a otras construcciones.
+              Los servicios de emergencia fueron alertados del accidente a las 8:47 horas, apenas dos minutos después de que ocurriera el incidente. 
+              <strong> Doce ambulancias, ocho vehículos de bomberos y tres helicópteros medicalizados</strong> se desplazaron inmediatamente a la zona. 
+              El Centro de Coordinación de Emergencias de Aragón activó el <strong>Plan de Emergencias por Accidente Ferroviario</strong>, 
+              movilizando a más de 150 efectivos.
             </p>
 
             <div className="bg-gray-50 border border-gray-200 rounded-lg p-6 my-8">
-              <h3 className="font-bold text-lg mb-4 text-gray-900">📋 DATOS CLAVE DEL INCENDIO</h3>
+              <h3 className="font-bold text-lg mb-4 text-gray-900">📋 DATOS CLAVE DEL ACCIDENTE</h3>
               <ul className="space-y-3">
                 <li className="flex items-start gap-3">
                   <div className="bg-red-100 text-red-600 rounded-full p-1 mt-0.5">
                     <div className="h-2 w-2"></div>
                   </div>
-                  <span><strong>Hora de inicio:</strong> 16:30 horas</span>
+                  <span><strong>Hora del accidente:</strong> 8:45 horas</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <div className="bg-red-100 text-red-600 rounded-full p-1 mt-0.5">
                     <div className="h-2 w-2"></div>
                   </div>
-                  <span><strong>Efectivos movilizados:</strong> 50 bomberos, 12 vehículos</span>
+                  <span><strong>Pasajeros a bordo:</strong> 187 personas</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <div className="bg-red-100 text-red-600 rounded-full p-1 mt-0.5">
                     <div className="h-2 w-2"></div>
                   </div>
-                  <span><strong>Personas evacuadas:</strong> 85 residentes</span>
+                  <span><strong>Heridos leves:</strong> 12 personas</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <div className="bg-red-100 text-red-600 rounded-full p-1 mt-0.5">
                     <div className="h-2 w-2"></div>
                   </div>
-                  <span><strong>Heridos leves:</strong> 3 personas (inhalación de humo)</span>
+                  <span><strong>Efectivos movilizados:</strong> 150 profesionales</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="bg-red-100 text-red-600 rounded-full p-1 mt-0.5">
+                    <div className="h-2 w-2"></div>
+                  </div>
+                  <span><strong>Vehículos de emergencia:</strong> 23 unidades</span>
                 </li>
               </ul>
             </div>
 
             <p>
-              El portavoz de Bomberos, <strong>Carlos Gutiérrez</strong>, ha informado a los medios que "la situación 
-              está siendo especialmente complicada debido a la antigüedad del edificio y a la presencia de materiales 
-              inflamables en su estructura". Los equipos están utilizando <strong>escaleras telescópicas y mangueras de 
-              gran caudal</strong> para intentar controlar las llamas desde el exterior, mientras otros grupos acceden 
-              al interior con equipos de respiración autónoma.
+              El presidente de Renfe, <strong>Raúl Blanco</strong>, se ha desplazado a Zaragoza para seguir de cerca la situación. 
+              En declaraciones a los medios, ha afirmado que "la prioridad absoluta es la atención a los pasajeros" y ha anunciado 
+              que la compañía ha activado su <strong>protocolo de asistencia a viajeros</strong>, que incluye atención psicológica, 
+              realojamiento en hoteles y reprogramación de viajes sin coste adicional.
             </p>
 
-            <h2 className="text-2xl font-bold mt-10 mb-6 text-gray-900">Reacción institucional</h2>
+            <h2 className="text-2xl font-bold mt-10 mb-6 text-gray-900">Tráfico ferroviario afectado</h2>
 
             <p>
-              La alcaldesa de Madrid, <strong>Martina Sánchez</strong>, se ha desplazado a la zona para seguir de cerca 
-              la evolución de los hechos. En declaraciones a EL INFORMADOR, ha afirmado que "la prioridad absoluta es 
-              la seguridad de las personas" y ha anunciado que el Ayuntamiento habilitará un <strong>punto de atención 
-              temporal</strong> en el Centro Cultural Conde Duque para los vecinos evacuados.
-            </p>
-
-            <p>
-              Por su parte, la Comunidad de Madrid ha activado el <strong>Plan de Emergencias por Incendios en Edificios 
-              Históricos</strong>, coordinando la actuación de todos los servicios implicados. El consejero de Interior, 
-              <strong> David López</strong>, ha destacado la "rápida y eficaz respuesta" de los servicios de emergencia 
-              y ha pedido a los ciudadanos que eviten acercarse a la zona para facilitar las labores de extinción.
+              El accidente ha provocado la <strong>interrupción total del tráfico ferroviario</strong> en la línea de alta velocidad 
+              Madrid-Barcelona. Renfe ha suspendido temporalmente todos los servicios AVE y Avant en este corredor, afectando a 
+              más de 15.000 pasajeros que tenían reservas para hoy. La compañía ha habilitado <strong>autobuses de sustitución</strong> 
+              para los trayectos más urgentes y recomienda a los viajeros consultar su página web para obtener información actualizada.
             </p>
 
             <div className="border-l-4 border-blue-600 pl-6 py-4 my-8 bg-blue-50">
               <p className="text-gray-800">
-                <strong>🚨 ACTUALIZACIÓN 18:45:</strong> Los bomberos informan que han conseguido <strong>controlar el 
-                70% del incendio</strong>. Las llamas ya no amenazan con extenderse a edificios colindantes. Se mantiene 
-                el perímetro de seguridad mientras continúan las labores de extinción.
+                <strong>🚨 ACTUALIZACIÓN 11:30:</strong> Renfe informa que los <strong>12 heridos leves han sido dados de alta</strong> 
+                tras ser atendidos en el Hospital Miguel Servet. Todos los pasajeros han sido evacuados del tren y se encuentran 
+                en un centro de atención temporal habilitado en la estación de Zaragoza-Delicias.
               </p>
             </div>
 
-            <h2 className="text-2xl font-bold mt-10 mb-6 text-gray-900">Tráfico y transporte afectado</h2>
+            <h2 className="text-2xl font-bold mt-10 mb-6 text-gray-900">Investigación de causas</h2>
 
             <p>
-              El incendio ha provocado importantes <strong>alteraciones en el tráfico</strong> del centro de Madrid. 
-              La calle Gran Vía permanece cortada entre Callao y Plaza de España, y se recomienda evitar la zona. 
-              La EMT ha desviado varias líneas de autobús (1, 2, 44, 74, 146) y se han habilitado rutas alternativas.
+              La <strong>Comisión de Investigación de Accidentes Ferroviarios (CIAF)</strong> ha iniciado ya las diligencias para 
+              determinar las causas del accidente. Un equipo de peritos se ha desplazado al lugar para examinar la vía, el material 
+              rodante y los sistemas de señalización. Las primeras hipótesis apuntan a un <strong>problema técnico en el sistema de frenos</strong> 
+              o a un objeto en la vía, aunque la investigación oficial podría tardar varias semanas en ofrecer conclusiones definitivas.
             </p>
 
             <p>
-              El Metro de Madrid ha informado que las estaciones de <strong>Gran Vía (L1, L5) y Callao (L3, L5)</strong> 
-              funcionan con normalidad, aunque con mayor afluencia de pasajeros debido a las restricciones en superficie. 
-              Se recomienda a los usuarios planificar sus desplazamientos con antelación.
+              El Ministerio de Transportes ha convocado una <strong>reunión de urgencia</strong> para evaluar la situación y coordinar 
+              la respuesta con las comunidades autónomas afectadas. La ministra, <strong>Isabel Pardo</strong>, ha expresado su 
+              "profunda preocupación" por lo sucedido y ha garantizado que se hará "todo lo necesario" para asistir a los afectados 
+              y prevenir futuros incidentes.
             </p>
           </div>
 
@@ -227,7 +238,7 @@ export default function ArticuloEjemplo() {
               <span className="font-medium text-gray-700">Etiquetas:</span>
             </div>
             <div className="flex flex-wrap gap-2">
-              {['Madrid', 'Incendio', 'Emergencia', 'Bomberos', 'Gran Vía', 'Evacuación', 'Tráfico', 'Edificio Histórico'].map((tag) => (
+              {currentArticle.tags.map((tag) => (
                 <span 
                   key={tag}
                   className="px-3 py-1.5 bg-gray-100 text-gray-700 text-sm font-medium rounded-full hover:bg-gray-200 transition-colors cursor-pointer"
@@ -245,7 +256,7 @@ export default function ArticuloEjemplo() {
                 MR
               </div>
               <div>
-                <h3 className="font-bold text-gray-900 mb-1">María Rodríguez</h3>
+                <h3 className="font-bold text-gray-900 mb-1">{currentArticle.author}</h3>
                 <p className="text-gray-600 text-sm">
                   Redactora de la sección de Última Hora.
                 </p>
