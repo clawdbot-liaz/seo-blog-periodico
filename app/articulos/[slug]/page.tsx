@@ -1,7 +1,8 @@
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
-import { Calendar, Clock, User, Tag, ArrowLeft, Share2, Bookmark } from 'lucide-react'
+import { Calendar, Clock, User, Tag, ArrowLeft, Bookmark } from 'lucide-react'
 import { getPostBySlug, getRelatedPosts } from '@/lib/posts'
+import ShareButtons from '@/components/ShareButtons'
 
 // Función para obtener el color de la categoría
 function getCategoryColor(category: string) {
@@ -116,9 +117,11 @@ export default async function ArticuloPage({ params }: { params: { slug: string 
               <button className="p-2 hover:bg-gray-100 rounded-full transition-colors" aria-label="Guardar">
                 <Bookmark className="h-5 w-5 text-gray-500" />
               </button>
-              <button className="p-2 hover:bg-gray-100 rounded-full transition-colors" aria-label="Compartir">
-                <Share2 className="h-5 w-5 text-gray-500" />
-              </button>
+              <ShareButtons 
+                title={post.title}
+                url={`/articulos/${post.slug}`}
+                excerpt={post.excerpt}
+              />
             </div>
           </div>
         </div>
