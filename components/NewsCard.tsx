@@ -12,7 +12,7 @@ interface NewsCardProps {
     category: string
     readTime: string
     tags: string[]
-    author?: string
+    author: string
     isFeatured?: boolean
     isBreaking?: boolean
     imageUrl?: string
@@ -96,12 +96,10 @@ export default function NewsCard({ post, variant = 'default' }: NewsCardProps) {
               <span>{post.readTime}</span>
             </div>
             
-            {post.author && (
-              <div className="flex items-center gap-1">
-                <User className="h-4 w-4" />
-                <span>{post.author}</span>
-              </div>
-            )}
+            <div className="flex items-center gap-1">
+              <User className="h-4 w-4" />
+              <span>{post.author || 'Redacción'}</span>
+            </div>
           </div>
           
           {variant !== 'compact' && (
