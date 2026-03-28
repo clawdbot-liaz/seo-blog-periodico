@@ -15,6 +15,8 @@ export interface Post {
   isBreaking?: boolean
   isFeatured?: boolean
   imageUrl?: string
+  relevanceScore?: number  // Puntuación de relevancia para artículos relacionados
+  relationScore?: number   // Puntuación calculada para relación
 }
 
 // Autores fijos por categoría
@@ -38,12 +40,13 @@ export function getPosts(): Post[] {
       excerpt: 'Los bomberos trabajan para controlar las llamas en un edificio histórico de la calle Gran Vía.',
       date: '2026-03-23',
       category: 'ÚLTIMA HORA',
-      readTime: '2 min',
-      content: '',
-      tags: ['Madrid', 'Incendio', 'Emergencia', 'Bomberos'],
+      readTime: '5 min',
+      content: 'Un incendio de grandes proporciones se declaró esta tarde en un edificio histórico de la calle Gran Vía. Los bomberos trabajan intensamente para controlar las llamas mientras se procede a la evacuación de residentes.',
+      tags: ['Madrid', 'Incendio', 'Emergencia', 'Bomberos', 'Gran Vía', 'Evacuación'],
       author: 'María Rodríguez',
       isBreaking: true,
-      isFeatured: true
+      isFeatured: true,
+      relevanceScore: 95  // Puntuación de relevancia para artículos relacionados
     },
     {
       slug: 'huelga-transportes',
@@ -52,9 +55,10 @@ export function getPosts(): Post[] {
       date: '2026-03-23',
       category: 'ÚLTIMA HORA',
       readTime: '3 min',
-      content: '',
-      tags: ['Huelga', 'Transporte', 'Protestas', 'Laboral'],
-      author: 'María Rodríguez'
+      content: 'Una huelga convocada por los sindicatos del transporte ha paralizado parcialmente varias ciudades españolas. Los usuarios se enfrentan a importantes alteraciones en sus desplazamientos.',
+      tags: ['Huelga', 'Transporte', 'Protestas', 'Laboral', 'Madrid'],
+      author: 'María Rodríguez',
+      relevanceScore: 85
     },
     {
       slug: 'tormenta-fuerte-lluvias',
@@ -63,9 +67,10 @@ export function getPosts(): Post[] {
       date: '2026-03-22',
       category: 'ÚLTIMA HORA',
       readTime: '2 min',
-      content: '',
-      tags: ['Tormenta', 'Lluvias', 'AEMET', 'Alerta'],
-      author: 'María Rodríguez'
+      content: 'La Agencia Estatal de Meteorología ha activado avisos por lluvias intensas en varias provincias del Mediterráneo. Se recomienda precaución a los ciudadanos.',
+      tags: ['Tormenta', 'Lluvias', 'AEMET', 'Alerta', 'Emergencia'],
+      author: 'María Rodríguez',
+      relevanceScore: 75
     },
     
     // ESPORTS - Javi Espartano
@@ -236,4 +241,59 @@ export function getFeaturedPosts(): Post[] {
 export function getBreakingNews(): Post[] {
   const posts = getPosts()
   return posts.filter(post => post.isBreaking).slice(0, 5)
+}
+
+// Función para obtener artículos relacionados
+export function getRelatedPosts(currentSlug: string, limit: number = 3): Post[] {
+  const posts = getPosts()
+  const currentPost = posts.find(post => post.slug === currentSlug)
+  
+  if (!currentPost) return []
+  
+  // Calcular puntuación de relación para cada post
+  const postsWithScore = posts
+    .filter(post => post.slug !== currentSlug) // Excluir el post actual
+    .map(post => {
+      let score = 0
+      
+      // Misma categoría: +40 puntos
+      if (post.category === currentPost.category) {
+        score += 40
+      }
+      
+      // Etiquetas comunes: +15 puntos por cada etiqueta común
+      const commonTags = post.tags.filter(tag => currentPost.tags.includes(tag))
+      score += commonTags.length * 15
+      
+      // Mismo autor: +10 puntos
+      if (post.author === currentPost.author) {
+        score += 10
+      }
+      
+      // Post destacado: +5 puntos
+      if (post.isFeatured) {
+        score += 5
+      }
+      
+      // Post de última hora: +5 puntos
+      if (post.isBreaking) {
+        score += 5
+      }
+      
+      // Relevancia predefinida: añadir puntuación base
+      if (post.relevanceScore) {
+        score += post.relevanceScore
+      }
+      
+      // Penalización por antigüedad: -1 punto por día de diferencia
+      const currentDate = new Date(currentPost.date)
+      const postDate = new Date(post.date)
+      const dayDiff = Math.abs((currentDate.getTime() - postDate.getTime()) / (1000 * 3600 * 24))
+      score -= Math.min(dayDiff, 30) // Máximo 30 puntos de penalización
+      
+      return { ...post, relationScore: score }
+    })
+    .sort((a, b) => b.relationScore - a.relationScore) // Ordenar por puntuación descendente
+  
+  return postsWithScore.slice(0, limit)
 }

@@ -1,7 +1,35 @@
 import Link from 'next/link'
 import { Calendar, Clock, User, Tag, ArrowLeft, Share2, Bookmark } from 'lucide-react'
+import { getRelatedPosts } from '@/lib/posts'
+
+// Función para obtener el color de la categoría
+function getCategoryColor(category: string) {
+  switch (category) {
+    case 'ÚLTIMA HORA':
+      return 'bg-red-600'
+    case 'ESPORTS':
+      return 'bg-blue-600'
+    case 'DEPORTES':
+      return 'bg-amber-500'
+    case 'INFLUENCER/POP':
+      return 'bg-purple-600'
+    case 'TECNOLOGÍA':
+      return 'bg-emerald-600'
+    default:
+      return 'bg-gray-600'
+  }
+}
+
+// Función para formatear la fecha
+function formatDate(dateString: string) {
+  const date = new Date(dateString)
+  return date.toLocaleDateString('es-ES', { day: 'numeric', month: 'short' })
+}
 
 export default function ArticuloEjemplo() {
+  // Obtener artículos relacionados (basados en el artículo actual "incendio-edificio-madrid")
+  const relatedPosts = getRelatedPosts('incendio-edificio-madrid', 3)
+
   return (
     <div className="min-h-screen bg-[#f5f4f0]">
       {/* Header del artículo */}
@@ -210,116 +238,105 @@ export default function ArticuloEjemplo() {
             </div>
           </div>
 
-          {/* Autor */}
+          {/* Autor - Versión simplificada */}
           <div className="mt-12 pt-8 border-t border-gray-200">
             <div className="flex items-start gap-4">
-              <div className="w-16 h-16 bg-gradient-to-r from-red-500 to-red-600 rounded-full flex items-center justify-center text-white text-2xl font-bold">
+              <div className="w-12 h-12 bg-gradient-to-r from-red-500 to-red-600 rounded-full flex items-center justify-center text-white font-bold">
                 MR
               </div>
               <div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">María Rodríguez</h3>
-                <p className="text-gray-600 mb-3">
-                  Periodista especializada en sucesos y emergencias. Con más de 15 años de experiencia cubriendo 
-                  noticias de última hora para EL INFORMADOR. Premio Nacional de Periodismo 2023.
+                <h3 className="font-bold text-gray-900 mb-1">María Rodríguez</h3>
+                <p className="text-gray-600 text-sm">
+                  Redactora de la sección de Última Hora.
                 </p>
-                <div className="text-sm text-gray-500">
-                  <span className="font-medium">Contacto:</span> mrodriguez@elinformador.es
-                </div>
               </div>
             </div>
           </div>
         </div>
       </article>
 
-      {/* Artículos relacionados */}
+      {/* Artículos relacionados - Con lógica funcional */}
       <section className="bg-white border-t border-gray-200 mt-12">
         <div className="container mx-auto px-4 md:px-8 py-12">
           <h2 className="text-2xl font-bold mb-8 text-gray-900">Artículos relacionados</h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            {/* Artículo 1 */}
-            <div className="border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
-              <div className="p-6">
-                <span className="inline-block bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full mb-4">
-                  ÚLTIMA HORA
-                </span>
-                <h3 className="font-bold text-lg mb-3 text-gray-900 hover:text-red-600 transition-colors">
-                  Huelga de transportes paraliza varias ciudades españolas
-                </h3>
-                <p className="text-gray-600 text-sm mb-4">
-                  Protestas por condiciones laborales afectan el transporte público en Madrid, Barcelona y Valencia.
-                </p>
-                <div className="flex items-center justify-between text-sm text-gray-500">
-                  <span>María Rodríguez</span>
-                  <span>23 mar</span>
+          
+          {relatedPosts.length > 0 ? (
+            <div className="grid md:grid-cols-3 gap-8">
+              {relatedPosts.map((post) => (
+                <div 
+                  key={post.slug} 
+                  className="border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow bg-white"
+                >
+                  <div className="p-6">
+                    {/* Categoría */}
+                    <span className={`inline-block ${getCategoryColor(post.category)} text-white text-xs font-bold px-3 py-1 rounded-full mb-4`}>
+                      {post.category}
+                    </span>
+                    
+                    {/* Título */}
+                    <h3 className="font-bold text-lg mb-3 text-gray-900 hover:text-red-600 transition-colors line-clamp-2">
+                      {post.title}
+                    </h3>
+                    
+                    {/* Extracto */}
+                    <p className="text-gray-600 text-sm mb-4 line-clamp-3">
+                      {post.excerpt}
+                    </p>
+                    
+                    {/* Metadatos */}
+                    <div className="flex items-center justify-between text-sm text-gray-500 pt-4 border-t border-gray-100">
+                      <span>{post.author}</span>
+                      <span>{formatDate(post.date)}</span>
+                    </div>
+                    
+                    {/* Debug: Mostrar puntuación de relación (solo en desarrollo) */}
+                    {process.env.NODE_ENV === 'development' && post.relationScore && (
+                      <div className="mt-3 pt-3 border-t border-gray-100">
+                        <div className="text-xs text-gray-400">
+                          Relevancia: <span className="font-bold">{post.relationScore.toFixed(1)} puntos</span>
+                          <div className="w-full bg-gray-200 rounded-full h-1.5 mt-1">
+                            <div 
+                              className="bg-green-500 h-1.5 rounded-full" 
+                              style={{ width: `${Math.min(post.relationScore, 100)}%` }}
+                            ></div>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </div>
                 </div>
-              </div>
+              ))}
             </div>
-
-            {/* Artículo 2 */}
-            <div className="border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
-              <div className="p-6">
-                <span className="inline-block bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full mb-4">
-                  ESPORTS
-                </span>
-                <h3 className="font-bold text-lg mb-3 text-gray-900 hover:text-blue-600 transition-colors">
-                  Team Spirit gana el Major de Berlín de Counter-Strike 2
-                </h3>
-                <p className="text-gray-600 text-sm mb-4">
-                  El equipo ruso se corona campeón del Major de Berlín tras una final épica contra FaZe Clan.
+          ) : (
+            <div className="text-center py-12 text-gray-500">
+              <p>No hay artículos relacionados disponibles en este momento.</p>
+            </div>
+          )}
+          
+          {/* Información sobre el algoritmo */}
+          <div className="mt-10 pt-8 border-t border-gray-200">
+            <details className="text-sm text-gray-500">
+              <summary className="cursor-pointer hover:text-gray-700">
+                ℹ️ ¿Cómo se seleccionan los artículos relacionados?
+              </summary>
+              <div className="mt-3 space-y-2 text-xs">
+                <p>Los artículos se seleccionan mediante un algoritmo que considera:</p>
+                <ul className="list-disc pl-5 space-y-1">
+                  <li><strong>Misma categoría</strong> (+40 puntos)</li>
+                  <li><strong>Etiquetas comunes</strong> (+15 por cada etiqueta compartida)</li>
+                  <li><strong>Mismo autor</strong> (+10 puntos)</li>
+                  <li><strong>Contenido destacado</strong> (+5 puntos)</li>
+                  <li><strong>Actualidad</strong> (-1 punto por cada día de diferencia)</li>
+                  <li><strong>Relevancia predefinida</strong> (puntuación base del artículo)</li>
+                </ul>
+                <p className="mt-2 text-gray-400">
+                  Los 3 artículos con mayor puntuación total se muestran como relacionados.
                 </p>
-                <div className="flex items-center justify-between text-sm text-gray-500">
-                  <span>Javi Espartano</span>
-                  <span>23 mar</span>
-                </div>
               </div>
-            </div>
-
-            {/* Artículo 3 */}
-            <div className="border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
-              <div className="p-6">
-                <span className="inline-block bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full mb-4">
-                  ÚLTIMA HORA
-                </span>
-                <h3 className="font-bold text-lg mb-3 text-gray-900 hover:text-red-600 transition-colors">
-                  Alerta por fuertes lluvias en la costa mediterránea
-                </h3>
-                <p className="text-gray-600 text-sm mb-4">
-                  La AEMET activa avisos naranja por riesgo de inundaciones en Valencia, Alicante y Murcia.
-                </p>
-                <div className="flex items-center justify-between text-sm text-gray-500">
-                  <span>María Rodríguez</span>
-                  <span>22 mar</span>
-                </div>
-              </div>
-            </div>
+            </details>
           </div>
         </div>
       </section>
-
-      {/* Footer del artículo */}
-      <div className="bg-gray-950 text-white py-8">
-        <div className="container mx-auto px-4 md:px-8">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            <div>
-              <p className="text-gray-400 text-sm mb-2">© 2026 EL INFORMADOR</p>
-              <p className="text-gray-500 text-xs">
-                Este artículo fue publicado el 23 de marzo de 2026 a las 17:30 horas.
-              </p>
-            </div>
-            <div className="flex items-center gap-6">
-              <button className="text-gray-400 hover:text-white transition-colors text-sm font-medium">
-                Reportar error
-              </button>
-              <button className="text-gray-400 hover:text-white transition-colors text-sm font-medium">
-                Sugerencias
-              </button>
-              <button className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded text-sm font-medium transition-colors">
-                Suscribirse al periódico
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   )
 }
