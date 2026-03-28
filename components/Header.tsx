@@ -1,7 +1,8 @@
 'use client'
 import Link from 'next/link'
-import { Newspaper, Search, Menu, X } from 'lucide-react'
+import { Newspaper, Menu, X } from 'lucide-react'
 import { useState } from 'react'
+import SearchBar from './SearchBar'
 
 const navLinks = [
   { label: 'Portada', href: '/' },
@@ -133,12 +134,7 @@ export default function Header() {
 
             {/* Right actions */}
             <div className="flex items-center gap-1 ml-auto md:ml-0 py-2">
-              <button
-                className="p-2 text-gray-600 hover:text-red-600 hover:bg-gray-100 rounded transition-colors duration-150"
-                aria-label="Buscar"
-              >
-                <Search className="h-4 w-4" />
-              </button>
+              <SearchBar />
               <button
                 className="md:hidden p-2 text-gray-600 hover:text-red-600 hover:bg-gray-100 rounded transition-colors duration-150"
                 aria-label="Menú"
