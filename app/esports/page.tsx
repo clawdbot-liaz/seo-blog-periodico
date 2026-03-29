@@ -39,60 +39,7 @@ export default function EsportsPage() {
         </div>
       </section>
 
-      {/* Juegos principales */}
-      <section className="mb-12">
-        <h2 className="text-3xl font-bold font-serif mb-8 border-b-2 border-gray-300 pb-4">JUEGOS PRINCIPALES</h2>
-        
-        <div className="grid md:grid-cols-3 gap-8">
-          <div className="bg-gray-50 rounded-2xl p-6 border border-gray-200 hover:border-red-300 transition">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="p-3 bg-red-100 rounded-lg">
-                <Trophy className="h-6 w-6 text-red-600" />
-              </div>
-              <h3 className="text-xl font-bold">Counter-Strike 2</h3>
-            </div>
-            <p className="text-gray-600 mb-4">
-              El shooter táctico por equipos más importante del mundo. Majors, ESL Pro League y BLAST Premier.
-            </p>
-            <div className="text-sm text-gray-500">
-              <Users className="inline h-4 w-4 mr-1" />
-              25M+ jugadores mensuales
-            </div>
-          </div>
-          
-          <div className="bg-gray-50 rounded-2xl p-6 border border-gray-200 hover:border-red-300 transition">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="p-3 bg-red-100 rounded-lg">
-                <Trophy className="h-6 w-6 text-red-600" />
-              </div>
-              <h3 className="text-xl font-bold">Valorant</h3>
-            </div>
-            <p className="text-gray-600 mb-4">
-              El shooter táctico de Riot Games que domina la escena competitiva con el VCT.
-            </p>
-            <div className="text-sm text-gray-500">
-              <Users className="inline h-4 w-4 mr-1" />
-              20M+ jugadores mensuales
-            </div>
-          </div>
-          
-          <div className="bg-gray-50 rounded-2xl p-6 border border-gray-200 hover:border-red-300 transition">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="p-3 bg-red-100 rounded-lg">
-                <Trophy className="h-6 w-6 text-red-600" />
-              </div>
-              <h3 className="text-xl font-bold">League of Legends</h3>
-            </div>
-            <p className="text-gray-600 mb-4">
-              El MOBA que revolucionó los esports con Worlds, MSI y ligas regionales.
-            </p>
-            <div className="text-sm text-gray-500">
-              <Users className="inline h-4 w-4 mr-1" />
-              180M+ jugadores mensuales
-            </div>
-          </div>
-        </div>
-      </section>
+
 
       {/* Próximos torneos */}
       <section className="mb-12">
