@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { getPosts } from '@/lib/posts'
 import NewsCard from '@/components/NewsCard'
-import { Zap, TrendingUp, AlertTriangle, Trophy, Users, Cpu, ArrowRight } from 'lucide-react'
+import { Zap, TrendingUp, AlertTriangle, Trophy, Users, Cpu, ArrowRight, Newspaper } from 'lucide-react'
 
 const CATEGORIES = [
   {
@@ -231,13 +231,25 @@ export default async function Home() {
 
           {/* Cards */}
           <div className="grid md:grid-cols-3 gap-px bg-gray-200 border border-gray-200">
-            {newspaperPosts
-              .filter((p) => p.isFeatured)
-              .map((post) => (
-                <div key={post.slug} className="bg-white p-6 hover:bg-gray-50 transition-colors">
-                  <NewsCard post={post} variant="default" />
+            {newspaperPosts.filter((p) => p.isFeatured).length > 0 ? (
+              newspaperPosts
+                .filter((p) => p.isFeatured)
+                .map((post) => (
+                  <div key={post.slug} className="bg-white p-6 hover:bg-gray-50 transition-colors">
+                    <NewsCard post={post} variant="default" />
+                  </div>
+                ))
+            ) : (
+              <div className="col-span-3 bg-white p-12 text-center">
+                <div className="inline-flex items-center justify-center p-4 bg-gray-100 rounded-full mb-6">
+                  <Newspaper className="h-12 w-12 text-gray-400" />
                 </div>
-              ))}
+                <h3 className="text-xl font-bold text-gray-700 mb-3">No hay artículos destacados</h3>
+                <p className="text-gray-500 max-w-md mx-auto">
+                  El periódico está actualmente vacío. Los artículos destacados aparecerán aquí cuando se publiquen nuevas noticias.
+                </p>
+              </div>
+            )}
           </div>
 
         </div>

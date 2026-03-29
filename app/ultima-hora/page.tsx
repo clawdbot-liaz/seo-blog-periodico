@@ -31,9 +31,21 @@ export default function UltimaHoraPage() {
         </div>
         
         <div className="grid md:grid-cols-3 gap-8">
-          {ultimaHoraPosts.map((post) => (
-            <NewsCard key={post.slug} post={post} variant="default" />
-          ))}
+          {ultimaHoraPosts.length > 0 ? (
+            ultimaHoraPosts.map((post) => (
+              <NewsCard key={post.slug} post={post} variant="default" />
+            ))
+          ) : (
+            <div className="col-span-3 bg-gray-50 rounded-2xl p-12 text-center border border-gray-200">
+              <div className="inline-flex items-center justify-center p-4 bg-gray-100 rounded-full mb-6">
+                <AlertTriangle className="h-12 w-12 text-gray-400" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-700 mb-3">No hay noticias de última hora</h3>
+              <p className="text-gray-500 max-w-md mx-auto">
+                No hay noticias publicadas en esta categoría. Las noticias de última hora aparecerán aquí cuando se publiquen.
+              </p>
+            </div>
+          )}
         </div>
       </section>
 

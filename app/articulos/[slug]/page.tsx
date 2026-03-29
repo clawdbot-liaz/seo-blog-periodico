@@ -47,7 +47,7 @@ export default async function ArticuloPage({ params }: { params: { slug: string 
   }
   
   // Obtener artículos relacionados
-  const relatedPosts = getRelatedPosts(post.slug, 3)
+  const relatedPosts = getRelatedPosts(post, 3)
   
   // Generar contenido extendido basado en el extracto
   const generateExtendedContent = (excerpt: string, tags: string[]) => {
@@ -299,3 +299,4 @@ export default async function ArticuloPage({ params }: { params: { slug: string 
     </div>
   )
 }
+
