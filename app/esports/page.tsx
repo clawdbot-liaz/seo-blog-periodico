@@ -20,31 +20,7 @@ export default function EsportsPage() {
         </p>
       </div>
 
-      {/* Estadísticas destacadas */}
-      <div className="bg-gray-50 rounded-2xl p-8 mb-12 border border-gray-200">
-        <h2 className="text-2xl font-bold mb-8 flex items-center gap-3">
-          <TrendingUp className="h-6 w-6 text-red-600" />
-          ESPORTS EN DATOS
-        </h2>
-        <div className="grid md:grid-cols-4 gap-6">
-          <div className="bg-white rounded-xl p-6 text-center border border-gray-200">
-            <div className="text-3xl font-bold text-red-600 mb-2">500M+</div>
-            <p className="text-gray-600">Espectadores globales</p>
-          </div>
-          <div className="bg-white rounded-xl p-6 text-center border border-gray-200">
-            <div className="text-3xl font-bold text-red-600 mb-2">$1.5B</div>
-            <p className="text-gray-600">En premios 2025</p>
-          </div>
-          <div className="bg-white rounded-xl p-6 text-center border border-gray-200">
-            <div className="text-3xl font-bold text-red-600 mb-2">120+</div>
-            <p className="text-gray-600">Países con competición</p>
-          </div>
-          <div className="bg-white rounded-xl p-6 text-center border border-gray-200">
-            <div className="text-3xl font-bold text-red-600 mb-2">2.8B</div>
-            <p className="text-gray-600">Jugadores activos</p>
-          </div>
-        </div>
-      </div>
+
 
       {/* Últimas noticias */}
       <section className="mb-12">
