@@ -148,23 +148,6 @@ export default function EsportsPage() {
         </div>
       </section>
 
-      {/* Equipos destacados */}
-      <section className="mb-12">
-        <h2 className="text-3xl font-bold font-serif mb-8 border-b-2 border-gray-300 pb-4">EQUIPOS DESTACADOS</h2>
-        
-        <div className="grid md:grid-cols-4 gap-6">
-          {['Team Spirit', 'FaZe Clan', 'Fnatic', 'T1'].map((team) => (
-            <div key={team} className="bg-gray-50 rounded-xl p-6 text-center border border-gray-200 hover:border-red-300 transition">
-              <div className="h-16 w-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Trophy className="h-8 w-8 text-red-600" />
-              </div>
-              <h3 className="font-bold text-lg mb-2">{team}</h3>
-              <p className="text-sm text-gray-600">Top mundial</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* Breadcrumb y navegación */}
       <div className="border-t border-gray-200 pt-8 mt-12">
         <div className="flex flex-col md:flex-row justify-between items-center">
