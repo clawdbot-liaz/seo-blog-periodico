@@ -171,12 +171,7 @@ export default function TrendingSection() {
         ))}
       </ol>
 
-      {/* Footer informativo */}
-      <div className="px-5 py-3 bg-gray-50 border-t border-gray-200">
-        <p className="text-[10px] text-gray-500 text-center">
-          Tendencias basadas en búsquedas reales • Actualizado automáticamente
-        </p>
-      </div>
+
     </div>
   )
 }
