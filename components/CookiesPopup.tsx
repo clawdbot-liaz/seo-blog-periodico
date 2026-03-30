@@ -96,7 +96,7 @@ export default function CookiesPopup() {
         </div>
 
         <div className="p-4 md:p-6 pt-0 md:pt-0 border-t border-gray-200">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 md:gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 md:gap-3">
             <button
               onClick={rejectCookies}
               className="px-4 py-2.5 md:px-6 md:py-3 border border-gray-300 text-gray-700 font-medium rounded-lg hover:bg-gray-50 transition text-sm md:text-base"
@@ -105,15 +105,8 @@ export default function CookiesPopup() {
             </button>
             
             <button
-              onClick={openPrivacyPolicy}
-              className="px-4 py-2.5 md:px-6 md:py-3 border border-gray-300 text-gray-700 font-medium rounded-lg hover:bg-gray-50 transition text-sm md:text-base"
-            >
-              Más información
-            </button>
-            
-            <button
               onClick={acceptCookies}
-              className="px-4 py-2.5 md:px-6 md:py-3 bg-red-600 text-white font-medium rounded-lg hover:bg-red-700 transition text-sm md:text-base col-span-1 sm:col-span-3 md:col-span-1"
+              className="px-4 py-2.5 md:px-6 md:py-3 bg-red-600 text-white font-medium rounded-lg hover:bg-red-700 transition text-sm md:text-base"
             >
               Aceptar todas
             </button>
@@ -132,7 +125,17 @@ export default function CookiesPopup() {
               >
                 Política de Privacidad
               </a>
-              {' '}y el uso de cookies.
+              {' '}y el uso de cookies. Puedes{' '}
+              <a 
+                href="/privacidad" 
+                className="text-red-600 hover:text-red-800 underline"
+                onClick={(e) => {
+                  e.preventDefault()
+                  openPrivacyPolicy()
+                }}
+              >
+                obtener más información aquí
+              </a>.
             </p>
           </div>
         </div>
