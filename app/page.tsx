@@ -1,7 +1,8 @@
 import Link from 'next/link'
 import { getPosts } from '@/lib/posts'
 import NewsCard from '@/components/NewsCard'
-import { Zap, TrendingUp, AlertTriangle, Trophy, Users, Cpu, ArrowRight, Newspaper } from 'lucide-react'
+import TrendingSection from '@/components/TrendingSection'
+import { Zap, AlertTriangle, Trophy, Users, Cpu, ArrowRight, Newspaper } from 'lucide-react'
 
 const CATEGORIES = [
   {
@@ -50,8 +51,6 @@ const CATEGORIES = [
     href: '/tecnologia',
   },
 ]
-
-const TRENDS = ['SEO 2024', 'Core Web Vitals', 'IA en Marketing', 'E-commerce']
 
 export default async function Home() {
   const posts = await getPosts()
@@ -133,27 +132,8 @@ export default async function Home() {
                 ))}
               </div>
 
-              {/* Trending */}
-              <div>
-                <div className="px-5 py-3 flex items-center gap-2 bg-gray-100 border-b border-gray-200">
-                  <TrendingUp className="h-3.5 w-3.5 text-gray-500" />
-                  <span className="text-[11px] font-bold tracking-widest uppercase text-gray-500">
-                    Tendencias
-                  </span>
-                </div>
-                <ol>
-                  {TRENDS.map((trend, i) => (
-                    <li key={i}>
-                      <button className="w-full flex items-center gap-3 px-5 py-3 border-b border-gray-200 hover:bg-white transition-colors text-left">
-                        <span className="text-[13px] font-black text-gray-300 w-5 shrink-0 tabular-nums">
-                          {i + 1}
-                        </span>
-                        <span className="text-sm text-gray-700 font-medium flex-1">{trend}</span>
-                      </button>
-                    </li>
-                  ))}
-                </ol>
-              </div>
+              {/* Trending Section - Tiempo real */}
+              <TrendingSection />
 
             </div>
           </div>
